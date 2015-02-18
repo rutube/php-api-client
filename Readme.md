@@ -5,7 +5,7 @@ Rutube PHP API Wrapper
 Установка через composer:
 
 ```sh
-composer require rutube/rutube
+composer require "rutube/php-api-client: 1.0.*"
 ```
 
 ## Использование
