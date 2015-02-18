@@ -1,5 +1,6 @@
 {
   "name": "rutube/php-api-client",
+  "version": "1.0",
   "keywords": [
     "rutube",
     "sdk",
