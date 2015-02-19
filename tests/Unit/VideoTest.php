@@ -46,7 +46,7 @@ class VideoTest extends BaseTest
         for ($i = 0; $i < TEST_ATTEMPTS; $i++) {
             try {
                 $res = $video->getVideo($id);
-            } catch (\NotFoundException $e) {
+            } catch (\Rutube\Exceptions\NotFoundException $e) {
                 // just waiting
             }
 
