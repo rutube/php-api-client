@@ -11,7 +11,8 @@ before_script:
 
 script:
   # - composer test
-  - phpunit --debug --exclude-group slow --log-json output.json
+  #- phpunit --debug --exclude-group slow --log-json output.json
+  ./vendor/bin/paratest -f tests/
 
 after_script:
-  - php utils/test-timers.php
+  #- php utils/test-timers.php

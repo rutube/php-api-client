@@ -1,6 +1,7 @@
 <?php
 
 include_once('BaseTest.php');
+
 /**
  * Class FinderTest
  */
@@ -15,11 +16,11 @@ class VideoTest extends BaseTest
 
         return [
             array_merge($credentials[0], [[
-                'url'         => RUTUBE_VIDEO,
+                'url' => RUTUBE_VIDEO,
                 'description' => 'Description',
-                'title'       => 'Title',
-                'isHidden'    => 1,
-                'categoryId'  => 13
+                'title' => 'Title',
+                'isHidden' => 1,
+                'categoryId' => 13
             ]]),
         ];
     }
@@ -29,16 +30,32 @@ class VideoTest extends BaseTest
         $video = $this->getRutubeVideo($username, $password, $secure, $host);
         $data = $this->getUploadVideo($video, $videoParams);
 
-        usleep(500000);
-
         return [$video, $data];
     }
 
-    public function getVideo($video, $id)
+    /**
+     * @param $video
+     * @param $id
+     * @return array|null
+     * @throws Exception
+     */
+    public function getSafeVideo($video, $id)
     {
-        usleep(500000);
+        $res = null;
 
-        return $video->getVideo($id);
+        for ($i = 0; $i < TEST_ATTEMPTS; $i++) {
+            try {
+                $res = $video->getVideo($id);
+            } catch (\NotFoundException $e) {
+                // just waiting
+            }
+
+            if ($res !== null) {
+                return $res;
+            }
+        }
+
+        throw new \Exception("Can't get video info");
     }
 
     /**
@@ -71,7 +88,7 @@ class VideoTest extends BaseTest
     {
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
 
-        $vo = $video->getVideo($data->video_id);
+        $vo = $this->getSafeVideo($video, $data->video_id);
 
         $this->assertEquals($videoParams['description'], $vo->description);
         $this->assertEquals($videoParams['title'], $vo->title);
@@ -90,16 +107,17 @@ class VideoTest extends BaseTest
 
         $videoParams2 = [
             'description' => 'New Description',
-            'title'       => 'New title',
-            'isHidden'    => 0,
-            'categoryId'  => 11
+            'title' => 'New title',
+            'isHidden' => 0,
+            'categoryId' => 11
         ];
 
         extract($videoParams2);
 
+        usleep(PAUSE_BETWEEN_ROUNDS);
         $video->patchVideo($data->video_id, $description, $title, $isHidden, $categoryId);
 
-        $vo = $this->getVideo($video, $data->video_id);
+        $vo = $this->getSafeVideo($video, $data->video_id);
 
         $this->assertEquals($videoParams2['description'], $vo->description);
         $this->assertEquals($videoParams2['title'], $vo->title);
@@ -118,16 +136,17 @@ class VideoTest extends BaseTest
 
         $videoParams2 = [
             'description' => 'New Description',
-            'title'       => 'New title',
-            'isHidden'    => 0,
-            'categoryId'  => 11
+            'title' => 'New title',
+            'isHidden' => 0,
+            'categoryId' => 11
         ];
 
         extract($videoParams2);
 
+        usleep(PAUSE_BETWEEN_ROUNDS);
         $video->putVideo($data->video_id, $description, $title, $isHidden, $categoryId);
 
-        $vo = $this->getVideo($video, $data->video_id);
+        $vo = $this->getSafeVideo($video, $data->video_id);
 
         $this->assertEquals($videoParams2['description'], $vo->description);
         $this->assertEquals($videoParams2['title'], $vo->title);
@@ -144,11 +163,12 @@ class VideoTest extends BaseTest
     {
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
 
-        $res = $video->addThumb($data->video_id, __DIR__.'/../../logo.png');
+        //sleep?
+        $res = $video->addThumb($data->video_id, __DIR__ . '/../../logo.png');
 
         $this->assertObjectHasAttribute('thumbnail_url', $res);
 
-        $vo = $this->getVideo($video, $data->video_id);
+        $vo = $this->getSafeVideo($video, $data->video_id);
 
         $this->assertEquals($data->track_id, $vo->track_id);
         $this->assertEquals($data->video_id, $vo->id);
@@ -162,7 +182,7 @@ class VideoTest extends BaseTest
     {
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
 
-        $time = date('Y-m-d H:i:s', time() + 60*60);
+        $time = date('Y-m-d H:i:s', time() + 60 * 60);
 
         $vo = $video->publication($data->video_id, $time);
 
