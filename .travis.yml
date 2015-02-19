@@ -10,5 +10,5 @@ before_script:
   - composer install
 
 script:
-  - composer test
+  - vendor/bin/paratest -f tests/
   #- phpunit --debug --exclude-group slow --log-json output.json
