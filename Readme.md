@@ -1,4 +1,4 @@
-Rutube PHP API Wrapper
+Rutube PHP API Client
 ======================
 
 ## Установка
@@ -107,3 +107,6 @@ $search->loadVideoPerson($page = 1, $limit = 20);
 $ composer update
 $ composer test
 ```
+
+## Документация по API
+[dev.rutube.ru](http://dev.rutube.ru/)

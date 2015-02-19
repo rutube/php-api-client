@@ -10,5 +10,8 @@ before_script:
   - composer install
 
 script:
-#  - composer test
-  phpunit --debug --exclude-group slow --log-json output.json
+  # - composer test
+  - phpunit --debug --exclude-group slow --log-json output.json
+
+after_script:
+  - php utils/test-timers.php
