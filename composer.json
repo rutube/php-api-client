@@ -13,6 +13,7 @@
       "name": "Rutube Team"
     }
   ],
+  "license": "Apache 2.0",
   "require": {
     "php": ">=5.4.0",
     "nategood/httpful": "0.2.17"
