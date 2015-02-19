@@ -29,14 +29,14 @@ class VideoTest extends BaseTest
         $video = $this->getRutubeVideo($username, $password, $secure, $host);
         $data = $this->getUploadVideo($video, $videoParams);
 
-        usleep(500000);
+        //usleep(500000);
 
         return [$video, $data];
     }
 
     public function getVideo($video, $id)
     {
-        usleep(500000);
+        //usleep(500000);
 
         return $video->getVideo($id);
     }
