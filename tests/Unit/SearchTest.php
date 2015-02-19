@@ -84,6 +84,7 @@ class SearchTest extends BaseTest
     }
 
     /**
+     * @group slow
      * @dataProvider defaultProvider
      *
      * @param $username

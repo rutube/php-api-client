@@ -59,6 +59,7 @@ class AuthTest extends BaseTest
     }
 
     /**
+     * @group slow
      * @dataProvider connectionErrorExceptionProvider
      * @expectedException \Httpful\Exception\ConnectionErrorException
      */
@@ -68,6 +69,7 @@ class AuthTest extends BaseTest
     }
 
     /**
+     * @group slow
      * @dataProvider badRequestExceptionProvider
      * @expectedException \Rutube\Exceptions\BadRequestException
      */
