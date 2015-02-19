@@ -29,14 +29,14 @@ class VideoTest extends BaseTest
         $video = $this->getRutubeVideo($username, $password, $secure, $host);
         $data = $this->getUploadVideo($video, $videoParams);
 
-        //usleep(500000);
+        usleep(500000);
 
         return [$video, $data];
     }
 
     public function getVideo($video, $id)
     {
-        //usleep(500000);
+        usleep(500000);
 
         return $video->getVideo($id);
     }
@@ -55,18 +55,6 @@ class VideoTest extends BaseTest
     /**
      * @dataProvider videoUploadSuccessProvider
      */
-    public function testDeleteByTrackId($username, $password, $secure, $host, $videoParams)
-    {
-        list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
-
-        $status = $video->deleteVideo($data->track_id);
-
-        $this->assertTrue($status);
-    }
-
-    /**
-     * @dataProvider videoUploadSuccessProvider
-     */
     public function testDeleteByVideoId($username, $password, $secure, $host, $videoParams)
     {
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
@@ -74,23 +62,6 @@ class VideoTest extends BaseTest
         $result = $video->deleteVideo($data->video_id);
 
         $this->assertTrue($result);
-    }
-
-    /**
-     * @dataProvider videoUploadSuccessProvider
-     */
-    public function testGetVideoByTrackId($username, $password, $secure, $host, $videoParams)
-    {
-        list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
-
-        $vo = $video->getVideo($data->track_id);
-
-        $this->assertEquals($videoParams['description'], $vo->description);
-        $this->assertEquals($videoParams['title'], $vo->title);
-        $this->assertEquals($videoParams['isHidden'], $vo->is_hidden);
-        $this->assertEquals($videoParams['categoryId'], $vo->category->id);
-        $this->assertEquals($data->track_id, $vo->track_id);
-        $this->assertEquals($data->video_id, $vo->id);
     }
 
     /**
@@ -106,34 +77,6 @@ class VideoTest extends BaseTest
         $this->assertEquals($videoParams['title'], $vo->title);
         $this->assertEquals($videoParams['isHidden'], $vo->is_hidden);
         $this->assertEquals($videoParams['categoryId'], $vo->category->id);
-        $this->assertEquals($data->track_id, $vo->track_id);
-        $this->assertEquals($data->video_id, $vo->id);
-    }
-
-    /**
-     * @dataProvider videoUploadSuccessProvider
-     */
-    public function testPatchVideoByTrackId($username, $password, $secure, $host, $videoParams)
-    {
-        list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
-
-        $videoParams2 = [
-            'description' => 'New Description',
-            'title'       => 'New title',
-            'isHidden'    => 0,
-            'categoryId'  => 11
-        ];
-
-        extract($videoParams2);
-
-        $video->patchVideo($data->track_id, $description, $title, $isHidden, $categoryId);
-
-        $vo = $this->getVideo($video, $data->track_id);
-
-        $this->assertEquals($videoParams2['description'], $vo->description);
-        $this->assertEquals($videoParams2['title'], $vo->title);
-        $this->assertEquals($videoParams2['isHidden'], $vo->is_hidden);
-        $this->assertEquals($videoParams2['categoryId'], $vo->category->id);
         $this->assertEquals($data->track_id, $vo->track_id);
         $this->assertEquals($data->video_id, $vo->id);
     }
@@ -157,35 +100,6 @@ class VideoTest extends BaseTest
         $video->patchVideo($data->video_id, $description, $title, $isHidden, $categoryId);
 
         $vo = $this->getVideo($video, $data->video_id);
-
-        $this->assertEquals($videoParams2['description'], $vo->description);
-        $this->assertEquals($videoParams2['title'], $vo->title);
-        $this->assertEquals($videoParams2['isHidden'], $vo->is_hidden);
-        $this->assertEquals($videoParams2['categoryId'], $vo->category->id);
-        $this->assertEquals($data->track_id, $vo->track_id);
-        $this->assertEquals($data->video_id, $vo->id);
-    }
-
-
-    /**
-     * @dataProvider videoUploadSuccessProvider
-     */
-    public function testPutVideoByTrackId($username, $password, $secure, $host, $videoParams)
-    {
-        list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
-
-        $videoParams2 = [
-            'description' => 'New Description',
-            'title'       => 'New title',
-            'isHidden'    => 0,
-            'categoryId'  => 11
-        ];
-
-        extract($videoParams2);
-
-        $video->putVideo($data->track_id, $description, $title, $isHidden, $categoryId);
-
-        $vo = $this->getVideo($video, $data->track_id);
 
         $this->assertEquals($videoParams2['description'], $vo->description);
         $this->assertEquals($videoParams2['title'], $vo->title);
@@ -221,24 +135,6 @@ class VideoTest extends BaseTest
         $this->assertEquals($videoParams2['categoryId'], $vo->category->id);
         $this->assertEquals($data->track_id, $vo->track_id);
         $this->assertEquals($data->video_id, $vo->id);
-    }
-
-    /**
-     * @dataProvider videoUploadSuccessProvider
-     */
-    public function testAddThumbByTrackId($username, $password, $secure, $host, $videoParams)
-    {
-        list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
-
-        $res = $video->addThumb($data->track_id, __DIR__.'/../../logo.png');
-
-        $this->assertObjectHasAttribute('thumbnail_url', $res);
-
-        $vo = $this->getVideo($video, $data->video_id);
-
-        $this->assertEquals($data->track_id, $vo->track_id);
-        $this->assertEquals($data->video_id, $vo->id);
-        $this->assertEquals($res->thumbnail_url, $vo->thumbnail_url);
     }
 
     /**
