@@ -10,4 +10,5 @@ before_script:
   - composer install
 
 script:
-  - composer test
+  #- composer test
+  phpunit --debug
