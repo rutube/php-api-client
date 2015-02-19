@@ -26,6 +26,6 @@
     "psr-4": {"Rutube\\": "src/"}
   },
   "scripts": {
-    "test": "./vendor/bin/paratest tests/"
+    "test": "vendor/bin/paratest -f tests/"
   }
 }

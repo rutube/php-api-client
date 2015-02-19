@@ -10,9 +10,5 @@ before_script:
   - composer install
 
 script:
-  # - composer test
+  - composer test
   #- phpunit --debug --exclude-group slow --log-json output.json
-  ./vendor/bin/paratest -f tests/
-
-after_script:
-  #- php utils/test-timers.php
