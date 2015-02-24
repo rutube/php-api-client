@@ -1,6 +1,7 @@
 Rutube PHP API Client
 ======================
 [![Build Status](https://travis-ci.org/rutube/php-api-client.svg?branch=master)](https://travis-ci.org/rutube/php-api-client)
+[![Latest Stable Version](https://poser.pugx.org/rutube/php-api-client/v/stable.svg)](https://packagist.org/packages/rutube/php-api-client)
 
 ## Установка
 Установка через composer:
