@@ -20,9 +20,9 @@ class ForbiddenException extends Exception
     /**
      * @var string
      */
-    public $message = 'Forbidden';
+    protected $message = 'Forbidden';
     /**
      * @var int
      */
-    public $code    = 403;
+    protected $code    = 403;
 }

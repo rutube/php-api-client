@@ -20,9 +20,9 @@ class NotFoundException extends Exception
     /**
      * @var string
      */
-    public $message = 'Not found';
+    protected $message = 'Not found';
     /**
      * @var int
      */
-    public $code    = 404;
+    protected $code    = 404;
 }

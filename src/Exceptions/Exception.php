@@ -32,6 +32,10 @@ class Exception extends \Exception
             $message = json_encode($message);
         }
 
+        if (empty($message)) {
+            $message = $this->message;
+        }
+
         parent::__construct($message, $code, $previous);
     }
 }

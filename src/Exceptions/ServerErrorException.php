@@ -20,9 +20,9 @@ class ServerErrorException extends Exception
     /**
      * @var string
      */
-    public $message = 'Server Error';
+    protected $message = 'Server Error';
     /**
      * @var int
      */
-    public $code    = 500;
+    protected $code    = 500;
 }

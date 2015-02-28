@@ -20,9 +20,9 @@ class BadRequestException extends Exception
     /**
      * @var string
      */
-    public $message = 'Bad Request';
+    protected $message = 'Bad Request';
     /**
      * @var int
      */
-    public $code    = 400;
+    protected $code    = 400;
 }

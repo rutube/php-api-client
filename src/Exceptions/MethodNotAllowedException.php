@@ -20,9 +20,9 @@ class MethodNotAllowedException extends Exception
     /**
      * @var string
      */
-    public $message = 'Method Not Allowed';
+    protected $message = 'Method Not Allowed';
     /**
      * @var int
      */
-    public $code    = 405;
+    protected $code    = 405;
 }
