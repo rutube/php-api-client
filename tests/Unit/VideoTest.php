@@ -198,4 +198,14 @@ class VideoTest extends BaseTest
         $this->assertEquals($data->video_id, $vo->video);
         $this->assertEquals($time, date('Y-m-d H:i:s', strtotime($vo->timestamp)));
     }
+
+    /**
+     * @dataProvider videoUploadSuccessProvider
+     * @expectedException \Rutube\Exceptions\NotFoundException
+     */
+    public function testVideoNotFound($username, $password, $secure, $host, $videoParams)
+    {
+        $video = $this->getRutubeVideo($username, $password, $secure, $host);
+        $video->getVideo('unknown_id');
+    }
 }
