@@ -24,19 +24,19 @@ use Rutube\Exceptions\Exception;
 class Transport
 {
     /**
-     * @var
+     * @var \Rutube\Transport
      */
     protected $client;
     /**
-     * @var
+     * @var boolean
      */
     protected $secure;
     /**
-     * @var
+     * @var \Rutube\Rutube
      */
     protected $rutube;
     /**
-     * @var
+     * @var string
      */
     protected $token;
     /**
@@ -64,16 +64,17 @@ class Transport
         $trs = $this->transports;
 
         if (!isset($trs[$transport]) || !class_exists($trs[$transport])) {
-            throw new Exception("Unknown ".$transport." transport");
+            throw new Exception("Unknown " . $transport . " transport");
         }
 
         $this->client = new $trs[$transport]();
     }
+
     /**
      * @var array
      */
     protected $transports = [
-        'httpful' =>  '\Rutube\Clients\ClientHttpful',
+        'httpful' => '\Rutube\Clients\ClientHttpful',
     ];
 
 
@@ -127,7 +128,7 @@ class Transport
     public function loadVideoPersonById($id, array $query)
     {
         $response = $this->client
-            ->get($this->getUrl('api/video/person/'.$id.'/', $query))
+            ->get($this->getUrl('api/video/person/' . $id . '/', $query))
             ->asJson()
             ->setHeaders()
             ->send();
@@ -165,7 +166,7 @@ class Transport
     public function loadVideoTags($id, array $query)
     {
         $response = $this->client
-            ->get($this->getUrl('api/tags/video/'.$id.'/', $query))
+            ->get($this->getUrl('api/tags/video/' . $id . '/', $query))
             ->asJson()
             ->setHeaders()
             ->send();
@@ -203,7 +204,7 @@ class Transport
     public function loadMetainfoTvContentTypes($id)
     {
         $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/'.$id.'/contenttvstype/'))
+            ->get($this->getUrl('api/metainfo/tv/' . $id . '/contenttvstype/'))
             ->asJson()
             ->setHeaders()
             ->send();
@@ -223,7 +224,7 @@ class Transport
     public function loadMetainfoTvSeasons($id)
     {
         $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/'.$id.'/season/'))
+            ->get($this->getUrl('api/metainfo/tv/' . $id . '/season/'))
             ->asJson()
             ->setHeaders()
             ->send();
@@ -243,7 +244,7 @@ class Transport
     public function loadMetainfoTvVideos($id, array $query)
     {
         $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/'.$id.'/video/', $query))
+            ->get($this->getUrl('api/metainfo/tv/' . $id . '/video/', $query))
             ->asJson()
             ->setHeaders()
             ->send();
@@ -263,7 +264,7 @@ class Transport
     public function loadMetainfoTvLastEpisode($id, $query)
     {
         $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/'.$id.'/last_episode/', $query))
+            ->get($this->getUrl('api/metainfo/tv/' . $id . '/last_episode/', $query))
             ->asJson()
             ->setHeaders()
             ->send();
@@ -282,7 +283,7 @@ class Transport
     public function loadMetainfoContenttvs($id)
     {
         $response = $this->client
-            ->get($this->getUrl('api/metainfo/contenttvs/'.$id.'/'))
+            ->get($this->getUrl('api/metainfo/contenttvs/' . $id . '/'))
             ->asJson()
             ->setHeaders()
             ->send();
@@ -321,7 +322,7 @@ class Transport
     public function deleteVideo($id)
     {
         $response = $this->client
-            ->delete($this->getUrl('api/video/'.$id))
+            ->delete($this->getUrl('api/video/' . $id))
             ->setHeaders($this->getToken())
             ->send();
 
@@ -340,7 +341,7 @@ class Transport
     public function putVideo($id, $params)
     {
         $response = $this->client
-            ->put($this->getUrl('api/video/'.$id.'/'))
+            ->put($this->getUrl('api/video/' . $id . '/'))
             ->asJson()
             ->setHeaders($this->getToken())
             ->setBody($params)
@@ -360,7 +361,7 @@ class Transport
     public function getVideo($id)
     {
         $response = $this->client
-            ->get($this->getUrl('api/video/'.$id.'/'))
+            ->get($this->getUrl('api/video/' . $id . '/'))
             ->setHeaders($this->getToken())
             ->send();
 
@@ -379,12 +380,11 @@ class Transport
     public function patchVideo($id, $params)
     {
         $response = $this->client
-            ->patch($this->getUrl('api/video/'.$id))
+            ->patch($this->getUrl('api/video/' . $id))
             ->asJson()
             ->setHeaders($this->getToken())
             ->setBody($params)
-            ->send()
-        ;
+            ->send();
 
         if (isset($this->exceptions[$response->meta_data['http_code']])) {
             throw new $this->exceptions[$response->meta_data['http_code']]();
@@ -401,12 +401,11 @@ class Transport
     public function addThumb($id, array $file)
     {
         $response = $this->client
-            ->post($this->getUrl('api/video/'.$id.'/thumbnail/'))
+            ->post($this->getUrl('api/video/' . $id . '/thumbnail/'))
             ->asJson()
             ->setHeaders($this->getToken())
             ->attach($file)
-            ->send()
-        ;
+            ->send();
 
         if (isset($this->exceptions[$response->meta_data['http_code']])) {
             throw new $this->exceptions[$response->meta_data['http_code']]();
@@ -426,8 +425,7 @@ class Transport
             ->asJson()
             ->setHeaders($this->getToken())
             ->setBody($params)
-            ->send()
-        ;
+            ->send();
 
         if (isset($this->exceptions[$response->meta_data['http_code']])) {
             throw new $this->exceptions[$response->meta_data['http_code']]();
@@ -447,7 +445,7 @@ class Transport
             $protocol .= 's';
         }
 
-        return $protocol."://";
+        return $protocol . "://";
     }
 
     /**
@@ -457,10 +455,10 @@ class Transport
      */
     protected function getUrl($url, $query = [])
     {
-        $url = $this->getProtocol().$this->rutube.'/'.$url;
+        $url = $this->getProtocol() . $this->rutube . '/' . $url;
 
         if ($query) {
-            $url .= '?'.http_build_query($query);
+            $url .= '?' . http_build_query($query);
         }
 
         return $url;

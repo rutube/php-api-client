@@ -21,7 +21,7 @@ abstract class Entity
     }
 
     /**
-     * @return mixed
+     * @return \Rutube\Transport
      */
     public function getTransport()
     {
