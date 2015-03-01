@@ -70,7 +70,7 @@ class AuthTest extends BaseTest
     /**
      * @group slow
      * @dataProvider connectionErrorExceptionProvider
-     * @expectedException \Httpful\Exception\ConnectionErrorException
+     * @expectedException \Rutube\Exceptions\ConnectionErrorException
      */
     public function testConnectionErrorExceptionAuth($username, $password, $secure, $host)
     {

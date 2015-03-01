@@ -24,7 +24,7 @@ use Rutube\Exceptions\Exception;
 class Transport
 {
     /**
-     * @var \Rutube\Transport
+     * @var \Httpful\Request
      */
     protected $client;
     /**
@@ -85,17 +85,9 @@ class Transport
      */
     public function authorize($username, $password)
     {
-        $response = $this->client
-            ->post($this->getUrl('api/accounts/token_auth/'))
-            ->asJson()
-            ->setBody(['username' => $username, 'password' => $password])
-            ->send();
+        $response = $this->call('POST', 'api/accounts/token_auth/', ['username' => $username, 'password' => $password]);
 
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        $this->token = $response->body->token;
+        $this->token = $response->token;
 
         return $this;
     }
@@ -106,18 +98,7 @@ class Transport
      */
     public function loadVideoPerson(array $query)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/video/person/', $query))
-            ->asJson()
-            ->setHeaders($this->getToken())
-            ->send();
-
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/video/person/', [], $query);
     }
 
     /**
@@ -127,17 +108,7 @@ class Transport
      */
     public function loadVideoPersonById($id, array $query)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/video/person/' . $id . '/', $query))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/video/person/' . $id . '/', [], $query);
     }
 
     /**
@@ -145,17 +116,7 @@ class Transport
      */
     public function loadTags()
     {
-        $response = $this->client
-            ->get($this->getUrl('api/tags/'))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/tags/');
     }
 
     /**
@@ -165,17 +126,7 @@ class Transport
      */
     public function loadVideoTags($id, array $query)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/tags/video/' . $id . '/', $query))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/tags/video/' . $id . '/', [], $query);
     }
 
     /**
@@ -184,17 +135,7 @@ class Transport
      */
     public function loadMetainfoTv(array $query)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/', $query))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/metainfo/tv/', [], $query);
     }
 
     /**
@@ -203,17 +144,7 @@ class Transport
      */
     public function loadMetainfoTvContentTypes($id)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/' . $id . '/contenttvstype/'))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/metainfo/tv/' . $id . '/contenttvstype/');
     }
 
 
@@ -223,17 +154,7 @@ class Transport
      */
     public function loadMetainfoTvSeasons($id)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/' . $id . '/season/'))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/metainfo/tv/' . $id . '/season/');
     }
 
     /**
@@ -243,17 +164,7 @@ class Transport
      */
     public function loadMetainfoTvVideos($id, array $query)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/' . $id . '/video/', $query))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/metainfo/tv/' . $id . '/video/', [], $query);
     }
 
     /**
@@ -263,17 +174,7 @@ class Transport
      */
     public function loadMetainfoTvLastEpisode($id, $query)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/metainfo/tv/' . $id . '/last_episode/', $query))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/metainfo/tv/' . $id . '/last_episode/', [], $query);
     }
 
     /**
@@ -282,17 +183,7 @@ class Transport
      */
     public function loadMetainfoContenttvs($id)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/metainfo/contenttvs/' . $id . '/'))
-            ->asJson()
-            ->setHeaders()
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/metainfo/contenttvs/' . $id . '/');
     }
 
     /**
@@ -301,18 +192,7 @@ class Transport
      */
     public function uploadVideo(array $params)
     {
-        $response = $this->client
-            ->post($this->getUrl('api/video/'))
-            ->asJson()
-            ->setHeaders($this->getToken())
-            ->setBody($params)
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]($response->body, $response->meta_data['http_code']);
-        }
-
-        return $response->body;
+        return $this->call('POST', 'api/video/', $params);
     }
 
     /**
@@ -321,16 +201,7 @@ class Transport
      */
     public function deleteVideo($id)
     {
-        $response = $this->client
-            ->delete($this->getUrl('api/video/' . $id))
-            ->setHeaders($this->getToken())
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->meta_data['http_code'] == 204;
+        return $this->call('DELETE', 'api/video/' . $id, [], [], [], true) == 204;
     }
 
     /**
@@ -340,18 +211,7 @@ class Transport
      */
     public function putVideo($id, $params)
     {
-        $response = $this->client
-            ->put($this->getUrl('api/video/' . $id . '/'))
-            ->asJson()
-            ->setHeaders($this->getToken())
-            ->setBody($params)
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('PUT', 'api/video/' . $id . '/', $params);
     }
 
     /**
@@ -360,16 +220,7 @@ class Transport
      */
     public function getVideo($id)
     {
-        $response = $this->client
-            ->get($this->getUrl('api/video/' . $id . '/'))
-            ->setHeaders($this->getToken())
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('GET', 'api/video/' . $id . '/');
     }
 
     /**
@@ -379,18 +230,7 @@ class Transport
      */
     public function patchVideo($id, $params)
     {
-        $response = $this->client
-            ->patch($this->getUrl('api/video/' . $id))
-            ->asJson()
-            ->setHeaders($this->getToken())
-            ->setBody($params)
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('PATCH', 'api/video/' . $id, $params);
     }
 
     /**
@@ -400,18 +240,7 @@ class Transport
      */
     public function addThumb($id, array $file)
     {
-        $response = $this->client
-            ->post($this->getUrl('api/video/' . $id . '/thumbnail/'))
-            ->asJson()
-            ->setHeaders($this->getToken())
-            ->attach($file)
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('POST', 'api/video/' . $id . '/thumbnail/', [], [], $file);
     }
 
     /**
@@ -420,18 +249,7 @@ class Transport
      */
     public function publication($params)
     {
-        $response = $this->client
-            ->post($this->getUrl('api/video/publication/'))
-            ->asJson()
-            ->setHeaders($this->getToken())
-            ->setBody($params)
-            ->send();
-
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
-        }
-
-        return $response->body;
+        return $this->call('POST', 'api/video/publication/', $params);
     }
 
     /**
@@ -494,5 +312,47 @@ class Transport
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * @param $method
+     * @param $url
+     * @param array $params
+     * @param array $query
+     * @param array $file
+     * @param bool $return_code
+     * @return mixed
+     * @throws Exceptions\ConnectionErrorException
+     */
+    private function call($method, $url, $params = [], $query = [], $file = [], $return_code = false)
+    {
+        try {
+            /** @var \Httpful\Request $request */
+            $request = $this->client
+                ->{strtolower($method)}($this->getUrl($url, $query))
+                ->asJson();
+
+            if ($this->getToken()) {
+                $request = $request->setHeaders($this->getToken());
+            }
+
+            if ($params) {
+                $request = $request->setBody($params);
+            }
+
+            if ($file) {
+                $request = $request->attach($file);
+            }
+
+            $response = $request->send();
+        } catch (\Exception $e) {
+            throw new \Rutube\Exceptions\ConnectionErrorException($e->getMessage(), $e->getCode());
+        }
+
+        if (isset($this->exceptions[$response->meta_data['http_code']])) {
+            throw new $this->exceptions[$response->meta_data['http_code']]();
+        }
+
+        return $return_code ? $response->meta_data['http_code'] : $response->body;
     }
 }
