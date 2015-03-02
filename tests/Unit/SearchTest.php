@@ -11,7 +11,7 @@
 
 include_once('BaseTest.php');
 /**
- * Class FinderTest
+ * Class SearchTest
  */
 class SearchTest extends BaseTest
 {

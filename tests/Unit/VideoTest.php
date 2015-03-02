@@ -12,7 +12,7 @@
 include_once('BaseTest.php');
 
 /**
- * Class FinderTest
+ * Class VideoTest
  */
 class VideoTest extends BaseTest
 {
