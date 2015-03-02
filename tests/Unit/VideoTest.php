@@ -64,7 +64,7 @@ class VideoTest extends BaseTest
             }
         }
 
-        throw new \Exception("Can't get video info");
+        throw new \Exception("Can't get video info after " . TEST_ATTEMPTS . " attempts");
     }
 
     /**
