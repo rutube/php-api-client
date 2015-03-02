@@ -275,7 +275,7 @@ class Transport
     {
         $url = $this->getProtocol() . $this->rutube . '/' . $url;
 
-        if ($query) {
+        if (!empty($query)) {
             $url .= '?' . http_build_query($query);
         }
 
@@ -328,11 +328,11 @@ class Transport
                 $request = $request->setHeaders($this->getToken());
             }
 
-            if ($params) {
+            if (!empty($params)) {
                 $request = $request->setBody($params);
             }
 
-            if ($file) {
+            if (!empty($file)) {
                 $request = $request->attach($file);
             }
 
