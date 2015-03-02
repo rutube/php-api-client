@@ -10,6 +10,7 @@
  */
 
 include_once('BaseTest.php');
+
 /**
  * Class FinderTest
  */
@@ -46,9 +47,18 @@ class RutubeTest extends BaseTest
         $this->assertInstanceOf('\Rutube\Transport', $r->getTransport());
     }
 
-    public function testRaw()
+    /**
+     * @expectedException \Rutube\Exceptions\Exception
+     */
+    public function testFakeTransport()
     {
-
+        new \Rutube\Transport('fake', true, new \Rutube\Rutube());
     }
 
+    public function testRaw()
+    {
+        $r = new \Rutube\Rutube();
+
+        $this->assertInstanceOf('\Rutube\Raw', $r->raw());
+    }
 }
