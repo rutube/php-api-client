@@ -36,7 +36,6 @@ class Rutube
     public function __construct($username = null, $password = null, $secure = true, $host = 'rutube.ru', $transport = 'httpful')
     {
         $this->secure = $secure;
-        /** @var \Httpful\Request transport */
         $this->transport = new Transport($transport, $secure, $host);
 
         if ($username && $password) {
@@ -90,7 +89,7 @@ class Rutube
      */
     public function raw()
     {
-
+        return new Raw($this->getTransport());
     }
 
     /**

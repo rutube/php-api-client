@@ -324,7 +324,7 @@ class Transport
      * @return mixed
      * @throws Exceptions\ConnectionErrorException
      */
-    private function call($method, $url, $params = [], $query = [], $file = [], $return_code = false)
+    public function call($method, $url, $params = [], $query = [], $file = [], $return_code = false)
     {
         try {
             /** @var \Httpful\Request $request */
