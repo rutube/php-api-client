@@ -307,14 +307,6 @@ class Transport
     }
 
     /**
-     * @return mixed
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
      * @param $method
      * @param $url
      * @param array $params
