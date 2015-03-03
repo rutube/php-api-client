@@ -76,3 +76,6 @@ vendor/
 composer.lock
 cli.php
 .DS_Store
+
+coverage.clover
+apigen/
