@@ -19,5 +19,5 @@ before_script:
 script:
   - vendor/bin/paratest -f tests/ $PHPUNIT_FLAGS
 
-after_script:
+after_success:
   - if [ $TRAVIS_PHP_VERSION = '5.6' ]; then sh .generate.sh; fi
