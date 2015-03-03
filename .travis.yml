@@ -12,7 +12,7 @@ install:
   - composer install
 
 before_script:
-  - if [ $TRAVIS_PHP_VERSION = '5.6' ]; then composer require 'apigen/apigen: 4.0.0'; fi
+  - if [ $TRAVIS_PHP_VERSION = '5.6' ]; then composer require apigen/apigen:4.0.0; fi
 
 script:
   - vendor/bin/paratest -f tests/
