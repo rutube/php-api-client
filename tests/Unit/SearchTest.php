@@ -257,4 +257,33 @@ class SearchTest extends BaseTest
         $this->assertObjectHasAttribute('page', $list);
         $this->assertObjectHasAttribute('results', $list);
     }
+
+    /**
+     * @dataProvider paginationProvider
+     *
+     * @param $username
+     * @param $password
+     * @param $secure
+     * @param $host
+     * @param $page
+     * @param $limit
+     */
+    public function testLoadTvVideoRelations($username, $password, $secure, $host, $page, $limit)
+    {
+        $search = $this->getRutubeSearch($username, $password, $secure, $host);
+
+        $list = $search->loadTv($page, $limit);
+
+        $tvShow = current($list->results)->id;
+
+        $list = $search->loadTvVideos($tvShow, $page, $limit);
+
+        $episode = current($list->results)->id;
+
+        $list = $search->loadTvVideoRelations($episode);
+
+        $this->assertObjectHasAttribute('video_id', $list);
+        $this->assertObjectHasAttribute('track_id', $list);
+
+    }
 }
