@@ -44,7 +44,7 @@ class RutubeTest extends BaseTest
     {
         $r = new \Rutube\Rutube();
 
-        $this->assertInstanceOf('\Rutube\Transport', $r->getTransport());
+        $this->assertInstanceOf('\Rutube\Transports\DefaultTransport', $r->getTransport());
     }
 
     /**
@@ -52,7 +52,7 @@ class RutubeTest extends BaseTest
      */
     public function testFakeTransport()
     {
-        new \Rutube\Transport('fake', true, new \Rutube\Rutube());
+        new \Rutube\Transports\DefaultTransport('fake', true, new \Rutube\Rutube());
     }
 
     public function testRaw()

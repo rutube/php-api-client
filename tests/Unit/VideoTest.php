@@ -86,7 +86,7 @@ class VideoTest extends BaseTest
         $videoParamsExtra = [
             'callback_url' => 'http://example.ru/success',
             'errback_url' => 'http://example.ru/error',
-            'query_fields' => json_encode(['track_id', 'video_id']),
+            'query_fields' => json_encode(['video_id']),
             'extra' => json_encode(['ext_id' => 'PR1234567890'])
         ];
 

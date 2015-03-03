@@ -72,8 +72,13 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
      */
     protected function getUploadVideo(\Rutube\Video $video, $params)
     {
+        if (!isset($params['callback_url'])) $params['callback_url'] = null;
+        if (!isset($params['errback_url'])) $params['errback_url'] = null;
+        if (!isset($params['query_fields'])) $params['query_fields'] = null;
+        if (!isset($params['extra'])) $params['extra'] = null;
+
         extract($params);
 
-        return $video->upload($url, $title, $description, $categoryId);
+        return $video->upload($url, $title, $description, $isHidden, $categoryId, $callback_url, $errback_url, $query_fields, $extra);
     }
 }
