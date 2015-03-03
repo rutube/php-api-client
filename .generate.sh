@@ -7,13 +7,15 @@
 
 # push apigen docs to github as gh-pages
 
+cd ./../apigen/
+
 ## set identity
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis"
 
 ## add branch
 git init
-git remote add origin https://${GH_TOKEN}@https://github.com/rutube/php-api-client.git > /dev/null
+git remote add origin https://${GH_TOKEN}@github.com/rutube/php-api-client.git > /dev/null
 git checkout -B gh-pages
 
 ## push generated files

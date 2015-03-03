@@ -1,4 +1,4 @@
 source: ./src
-destination: ./apigen
+destination: ./../apigen
 templateTheme: bootstrap
 title: PHP client for Rutube API
