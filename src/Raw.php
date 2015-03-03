@@ -18,8 +18,8 @@ namespace Rutube;
 class Raw extends Entity
 {
     /**
-     * @param $method
-     * @param $url
+     * @param string $method
+     * @param string $url
      * @param array $options ['params'=>[], 'query'=>[], 'file'=>[], 'return_code'=>false]
      * @return mixed
      */

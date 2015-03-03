@@ -11,6 +11,10 @@
 
 namespace Rutube\Clients;
 
+/**
+ * Interface ClientInterface
+ * @package Rutube\Clients
+ */
 interface ClientInterface
 {
     public function get($uri);

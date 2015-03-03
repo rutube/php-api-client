@@ -15,14 +15,6 @@ namespace Rutube;
  * Class Video
  * @package Rutube
  */
-/**
- * Class Video
- * @package Rutube
- */
-/**
- * Class Video
- * @package Rutube
- */
 class Video extends Entity
 {
     /**

@@ -123,6 +123,10 @@ class ClientHttpful implements ClientInterface
         return $this;
     }
 
+    /**
+     * @param array $files
+     * @return $this
+     */
     public function attach(array $files)
     {
         $this->request->attach($files);

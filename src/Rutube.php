@@ -52,7 +52,7 @@ class Rutube
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function isSecure()
     {
@@ -69,7 +69,7 @@ class Rutube
     }
 
     /**
-     *
+     * @return Account
      */
     public function account()
     {
@@ -85,7 +85,7 @@ class Rutube
     }
 
     /**
-     *
+     * @return Raw
      */
     public function raw()
     {

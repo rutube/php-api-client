@@ -11,10 +11,20 @@
 
 namespace Rutube;
 
+/**
+ * Abstract Class Entity
+ * @package Rutube
+ */
 abstract class Entity
 {
+    /**
+     * @var \Rutube\Transport
+     */
     protected $transport;
 
+    /**
+     * @param Transport $transport
+     */
     public function __construct(Transport $transport)
     {
         $this->setTransport($transport);
