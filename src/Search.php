@@ -12,34 +12,41 @@
 namespace Rutube;
 
 /**
- * Class Search
+ * Поиск через API Rutube
+ *
  * @package Rutube
  */
 class Search extends Entity
 {
     /**
-     * @param int $page
-     * @param int $limit
+     * Получение списка собственных роликов
+     *
+     * @param int $page Страница
+     * @param int $limit Кол-во результатов на странице
      * @return mixed
      */
     public function loadVideoPerson($page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadVideoPerson(['page'=> $page, 'limit' => $limit]);
+        return $this->getTransport()->loadVideoPerson(['page' => $page, 'limit' => $limit]);
     }
 
     /**
-     * @param $id
-     * @param int $page
-     * @param int $limit
+     * Получение публичного списка роликов пользователя
+     *
+     * @param int $id ID пользователя
+     * @param int $page Страница
+     * @param int $limit Кол-во результатов на странице
      * @return mixed
      */
     public function loadVideoPersonById($id, $page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadVideoPersonById($id, ['page'=> $page, 'limit' => $limit]);
+        return $this->getTransport()->loadVideoPersonById($id, ['page' => $page, 'limit' => $limit]);
 
     }
 
     /**
+     * Загрузка справочника тегов
+     *
      * @return mixed
      */
     public function loadTags()
@@ -48,29 +55,35 @@ class Search extends Entity
     }
 
     /**
-     * @param $id
-     * @param int $page
-     * @param int $limit
+     * Получение списка роликов по тегу
+     *
+     * @param int $id ID тега
+     * @param int $page Страница
+     * @param int $limit Кол-во результатов на странице
      * @return mixed
      */
     public function loadVideoTags($id, $page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadVideoTags($id, ['page'=> $page, 'limit' => $limit]);
+        return $this->getTransport()->loadVideoTags($id, ['page' => $page, 'limit' => $limit]);
 
     }
 
     /**
-     * @param int $page
-     * @param int $limit
+     * Получение списка доступных ТВ-шоу
+     *
+     * @param int $page Страница
+     * @param int $limit Кол-во результатов на странице
      * @return mixed
      */
     public function loadTv($page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadMetainfoTv(['page'=> $page, 'limit' => $limit]);
+        return $this->getTransport()->loadMetainfoTv(['page' => $page, 'limit' => $limit]);
     }
 
     /**
-     * @param $id
+     * Получение списка возможных типов контента для указанного ТВ-шоу
+     *
+     * @param string $id ID ТВ-шоу
      * @return mixed
      */
     public function loadTvTypes($id)
@@ -79,7 +92,9 @@ class Search extends Entity
     }
 
     /**
-     * @param $id
+     * Получение списка сезонов для указанного ТВ-шоу
+     *
+     * @param string $id ID ТВ-шоу
      * @return mixed
      */
     public function loadTvSeasons($id)
@@ -88,29 +103,35 @@ class Search extends Entity
     }
 
     /**
-     * @param $id
-     * @param int $page
-     * @param int $limit
+     * Получение списка роликов для указанного ТВ-шоу
+     *
+     * @param string $id ID ТВ-шоу
+     * @param int $page Страница
+     * @param int $limit Кол-во результатов на странице
      * @return mixed
      */
     public function loadTvVideos($id, $page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadMetainfoTvVideos($id, ['page'=> $page, 'limit' => $limit]);
+        return $this->getTransport()->loadMetainfoTvVideos($id, ['page' => $page, 'limit' => $limit]);
     }
 
     /**
-     * @param $id
-     * @param int $page
-     * @param int $limit
+     * Получение списка роликов для указанного ТВ-шоу для последнего сезона
+     *
+     * @param string $id ID ТВ-шоу
+     * @param int $page Страница
+     * @param int $limit Кол-во результатов на странице
      * @return mixed
      */
     public function loadTvLastSeasonVideos($id, $page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadMetainfoTvLastEpisode($id, ['page'=> $page, 'limit' => $limit]);
+        return $this->getTransport()->loadMetainfoTvLastEpisode($id, ['page' => $page, 'limit' => $limit]);
     }
 
     /**
-     * @param $id
+     * Получение информации о связях видео с ТВ-шоу
+     *
+     * @param string $id ID эпизода
      * @return mixed
      */
     public function loadTvVideoRelations($id)

@@ -24,5 +24,5 @@ class BadRequestException extends Exception
     /**
      * @var int
      */
-    protected $code    = 400;
+    protected $code = 400;
 }

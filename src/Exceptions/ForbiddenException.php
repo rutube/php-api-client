@@ -24,5 +24,5 @@ class ForbiddenException extends Exception
     /**
      * @var int
      */
-    protected $code    = 403;
+    protected $code = 403;
 }

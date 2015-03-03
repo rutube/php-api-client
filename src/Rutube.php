@@ -14,26 +14,34 @@ namespace Rutube;
 use Rutube\Transports\DefaultTransport as Transport;
 
 /**
- * Class Rutube
+ * Корневой класс работы с библиотекой
+ *
  * @package Rutube
  */
 class Rutube
 {
     /**
+     * Транспорт выполнения запроса к API
+     *
      * @var Transport
      */
     protected $transport;
+
     /**
+     * Признак выполнения запросов через https
+     *
      * @var bool
      */
     protected $secure = false;
 
     /**
-     * @param null $username
-     * @param null $password
-     * @param bool $secure
-     * @param string $host
-     * @param string $transport
+     * Инициализация
+     *
+     * @param string|null $username логин Rutube
+     * @param string|null $password пароль
+     * @param bool $secure Использовать https
+     * @param string $host Домен API
+     * @param string $transport Транспорт
      */
     public function __construct($username = null, $password = null, $secure = true, $host = 'rutube.ru', $transport = 'httpful')
     {
@@ -46,6 +54,8 @@ class Rutube
     }
 
     /**
+     * Авторизован ли пользователь
+     *
      * @return bool
      */
     public function isAuthorized()
@@ -54,6 +64,8 @@ class Rutube
     }
 
     /**
+     * Используется ли безопасное соединение
+     *
      * @return bool
      */
     public function isSecure()
@@ -63,6 +75,8 @@ class Rutube
 
 
     /**
+     * Стартовая точка работы с видео
+     *
      * @return Video
      */
     public function video()
@@ -71,6 +85,8 @@ class Rutube
     }
 
     /**
+     * Стартовая точка работы с аккаунтом
+     *
      * @return Account
      */
     public function account()
@@ -79,6 +95,8 @@ class Rutube
     }
 
     /**
+     * Стартовая точка поиска через API
+     *
      * @return Search
      */
     public function search()
@@ -87,6 +105,8 @@ class Rutube
     }
 
     /**
+     * Стартовая точка прямых запросов к Rutube
+     *
      * @return Raw
      */
     public function raw()
@@ -95,6 +115,8 @@ class Rutube
     }
 
     /**
+     * Возвращает текущий транспорт
+     *
      * @return Transport
      */
     public function getTransport()

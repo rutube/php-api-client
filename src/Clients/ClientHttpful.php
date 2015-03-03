@@ -14,12 +14,14 @@ namespace Rutube\Clients;
 use Httpful\Request;
 
 /**
- * Class ClientHttpful
+ * HTTP-клиент на основе Httpful
  * @package Rutube\Clients
  */
 class ClientHttpful implements ClientInterface
 {
-    /** @var  Request */
+    /**
+     * @var Request
+     */
     public $request;
 
     /**
@@ -80,8 +82,8 @@ class ClientHttpful implements ClientInterface
     public function setHeaders($token = null)
     {
         $headers = [
-            'Accept'        => 'application/json',
-            'User-Agent'    => '',
+            'Accept' => 'application/json',
+            'User-Agent' => '',
         ];
 
         if ($token) {
@@ -106,6 +108,7 @@ class ClientHttpful implements ClientInterface
 
     /**
      * @return \Httpful\associative|string
+     *
      * @throws \Httpful\Exception\ConnectionErrorException
      */
     public function send()

@@ -14,7 +14,8 @@ namespace Rutube\Transports;
 use Rutube\Exceptions\Exception;
 
 /**
- * Class Transport
+ * Низкоуровневое обращение к API
+ *
  * @package Rutube\Transports
  */
 class DefaultTransport
@@ -23,18 +24,22 @@ class DefaultTransport
      * @var \Httpful\Request
      */
     protected $client;
+
     /**
      * @var boolean
      */
     protected $secure;
+
     /**
      * @var \Rutube\Rutube
      */
     protected $rutube;
+
     /**
      * @var string
      */
     protected $token;
+
     /**
      * @var array
      */
@@ -303,14 +308,15 @@ class DefaultTransport
     }
 
     /**
-     * @param $method
-     * @param $url
-     * @param array $params
-     * @param array $query
-     * @param array $file
-     * @param bool $return_code
+     * @param string $method Метод: GET, POST, PUT, PATCH, DELETE
+     * @param string $url URL метода API, например: api/video/person/
+     * @param array $params Параметры зпроса
+     * @param array $query Запрос
+     * @param array $file Путь к файлу
+     * @param bool $return_code Если true - вместо текста ответа возвращается HTTP-код ответа
      * @return mixed
-     * @throws Exceptions\ConnectionErrorException
+     *
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function call($method, $url, $params = [], $query = [], $file = [], $return_code = false)
     {

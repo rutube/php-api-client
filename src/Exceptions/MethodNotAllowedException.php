@@ -24,5 +24,5 @@ class MethodNotAllowedException extends Exception
     /**
      * @var int
      */
-    protected $code    = 405;
+    protected $code = 405;
 }

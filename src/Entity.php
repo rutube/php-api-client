@@ -14,17 +14,22 @@ namespace Rutube;
 use Rutube\Transports\DefaultTransport as Transport;
 
 /**
- * Abstract Class Entity
+ * Базовый класс
+ *
  * @package Rutube
  */
 abstract class Entity
 {
     /**
+     * Транспорт выполнения запроса к API
+     *
      * @var Transport
      */
     protected $transport;
 
     /**
+     * Инициализация транспорта
+     *
      * @param Transport $transport
      */
     public function __construct(Transport $transport)
@@ -33,6 +38,8 @@ abstract class Entity
     }
 
     /**
+     * Возвращает текущий транспорт
+     *
      * @return Transport
      */
     public function getTransport()
@@ -41,6 +48,8 @@ abstract class Entity
     }
 
     /**
+     * Устанавливает транспорт
+     *
      * @param mixed $transport
      */
     public function setTransport($transport)

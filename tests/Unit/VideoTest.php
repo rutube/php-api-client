@@ -145,7 +145,7 @@ class VideoTest extends BaseTest
         extract($videoParams2);
 
         usleep(PAUSE_BETWEEN_ROUNDS);
-        $video->patchVideo($data->video_id, $description, $title, $isHidden, $categoryId);
+        $video->patchVideo($data->video_id, $title, $description, $isHidden, $categoryId);
 
         $vo = $this->getSafeVideo($video, $data->video_id);
 
@@ -174,7 +174,7 @@ class VideoTest extends BaseTest
         extract($videoParams2);
 
         usleep(PAUSE_BETWEEN_ROUNDS);
-        $video->putVideo($data->video_id, $description, $title, $isHidden, $categoryId);
+        $video->putVideo($data->video_id, $title, $description, $isHidden, $categoryId);
 
         $vo = $this->getSafeVideo($video, $data->video_id);
 

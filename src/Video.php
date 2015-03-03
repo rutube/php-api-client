@@ -12,30 +12,33 @@
 namespace Rutube;
 
 /**
- * Class Video
+ * Работа с видео
+ *
  * @package Rutube
  */
 class Video extends Entity
 {
     /**
-     * @param $url
-     * @param string $title
-     * @param string $description
-     * @param int $isHidden
-     * @param int $category_id
-     * @param null $callback_url
-     * @param null $errback_url
-     * @param null $query_fields
-     * @param null $extra
+     * Загрузка видео
+     *
+     * @param string $url URL по которому находится скачиваемый ролик
+     * @param string $title Название
+     * @param string $description Описание
+     * @param int $is_hidden Признак видимости, 1 - ролик скрыт
+     * @param int $category_id ID категории
+     * @param string|null $callback_url URL, вызываемый по завершению обработки ролика
+     * @param string|null $errback_url URL, вызываемый для сообщения об ошибке
+     * @param string|null $query_fields Перечень возвращаемых полей
+     * @param string|null $extra Дополнительные параметры для колбэков
      * @return mixed
      */
-    public function upload($url, $title = '', $description = '', $isHidden = 1, $category_id = 13, $callback_url = null, $errback_url = null, $query_fields = null, $extra = null)
+    public function upload($url, $title = '', $description = '', $is_hidden = 1, $category_id = 13, $callback_url = null, $errback_url = null, $query_fields = null, $extra = null)
     {
         $params = [
             'url' => $url,
             'title' => $title,
             'description' => $description,
-            'is_hidden' => $isHidden,
+            'is_hidden' => $is_hidden,
             'category_id' => $category_id,
         ];
 
@@ -53,14 +56,15 @@ class Video extends Entity
 
         if ($extra !== null) {
             $params['extra'] = $extra;
-
         }
 
         return $this->getTransport()->uploadVideo($params);
     }
 
     /**
-     * @param $id
+     * Удаление ролика
+     *
+     * @param string $id ID ролика
      * @return mixed
      */
     public function deleteVideo($id)
@@ -69,7 +73,9 @@ class Video extends Entity
     }
 
     /**
-     * @param $id
+     * Получени информации о ролике
+     *
+     * @param string $id ID ролика
      * @return mixed
      */
     public function getVideo($id)
@@ -78,59 +84,65 @@ class Video extends Entity
     }
 
     /**
-     * @param $id
-     * @param $description
-     * @param $title
-     * @param $is_hidden
-     * @param $category
+     * Обновить информацию о ролике
+     *
+     * @param string $id ID ролика
+     * @param string $title Название
+     * @param string $description Описание
+     * @param int $is_hidden Признак видимости, 1 - ролик скрыт
+     * @param int $category_id ID категории
      * @return mixed
      */
-    public function putVideo($id, $description, $title, $is_hidden, $category)
+    public function putVideo($id, $title, $description, $is_hidden, $category_id)
     {
         $params = [
+            'title' => $title,
             'description' => $description,
-            'title'       => $title,
-            'is_hidden'   => $is_hidden,
-            'category'    => $category
+            'is_hidden' => $is_hidden,
+            'category' => $category_id
         ];
 
         return $this->getTransport()->putVideo($id, $params);
     }
 
     /**
-     * @param $id
-     * @param $description
-     * @param $title
-     * @param $hidden
-     * @param $category
+     * Обновление только указанных полей в информации о ролике
+     *
+     * @param string $id ID ролика
+     * @param string|null $title Название
+     * @param string|null $description Описание
+     * @param int|null $is_hidden Признак видимости, 1 - ролик скрыт
+     * @param int|null $category_id ID категории
      * @return mixed
      */
-    public function patchVideo($id, $description = null, $title = null, $hidden = null, $category = null)
+    public function patchVideo($id, $title = null, $description = null, $is_hidden = null, $category_id = null)
     {
         $params = [];
-
-        if (!is_null($description)) {
-            $params['description'] = $description;
-        }
 
         if (!is_null($title)) {
             $params['title'] = $title;
         }
 
-        if (!is_null($hidden)) {
-            $params['is_hidden'] = $hidden;
+        if (!is_null($description)) {
+            $params['description'] = $description;
         }
 
-        if (!is_null($category)) {
-            $params['category'] = $category;
+        if (!is_null($is_hidden)) {
+            $params['is_hidden'] = $is_hidden;
+        }
+
+        if (!is_null($category_id)) {
+            $params['category'] = $category_id;
         }
 
         return $this->getTransport()->patchVideo($id, $params);
     }
 
     /**
-     * @param $filename
-     * @param $id
+     * Загрузка превью к ролику
+     *
+     * @param string $id ID ролика
+     * @param string $filename Путь к файлу превью
      * @return mixed
      */
     public function addThumb($id, $filename)
@@ -140,15 +152,17 @@ class Video extends Entity
     }
 
     /**
-     * @param $videoId
-     * @param $timestamp - format '2015-01-16 20:36:31'
+     * Отложенная публикация ролика
+     *
+     * @param string $id ID ролика
+     * @param string $date Дата в формате 'YYYY-MM-DD H:i:s', например: '2015-01-16 20:36:31'
      * @return mixed
      */
-    public function publication($videoId, $timestamp)
+    public function publication($id, $date)
     {
         $params = [
-            'video'     => $videoId,
-            'timestamp' => $timestamp,
+            'video' => $id,
+            'timestamp' => $date,
         ];
 
         return $this->getTransport()->publication($params);

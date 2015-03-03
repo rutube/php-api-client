@@ -24,5 +24,5 @@ class ServerErrorException extends Exception
     /**
      * @var int
      */
-    protected $code    = 500;
+    protected $code = 500;
 }

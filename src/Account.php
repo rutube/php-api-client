@@ -12,7 +12,8 @@
 namespace Rutube;
 
 /**
- * Class Account
+ * Управление аккаунтом пользователя
+ *
  * @package Rutube
  */
 class Account extends Entity

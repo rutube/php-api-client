@@ -12,15 +12,18 @@
 namespace Rutube;
 
 /**
- * Class Raw
+ * Реализация прямых запросов к API
+ *
  * @package Rutube
  */
 class Raw extends Entity
 {
     /**
-     * @param string $method
-     * @param string $url
-     * @param array $options ['params'=>[], 'query'=>[], 'file'=>[], 'return_code'=>false]
+     * Прямой запрос к API Rutube
+     *
+     * @param string $method Метод: GET, POST, PUT, PATCH, DELETE
+     * @param string $url URL метода API, например: api/video/person/
+     * @param array $options Параметры запроса: ['params'=>[], 'query'=>[], 'file'=>[], 'return_code'=>false]
      * @return mixed
      */
     public function call($method, $url, $options = [])

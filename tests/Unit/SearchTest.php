@@ -79,6 +79,7 @@ class SearchTest extends BaseTest
      * @param $password
      * @param $secure
      * @param $host
+     * @param $personId
      * @param $page
      * @param $limit
      */
