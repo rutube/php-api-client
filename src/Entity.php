@@ -11,6 +11,8 @@
 
 namespace Rutube;
 
+use Rutube\Transports\DefaultTransport as Transport;
+
 /**
  * Abstract Class Entity
  * @package Rutube
@@ -18,7 +20,7 @@ namespace Rutube;
 abstract class Entity
 {
     /**
-     * @var \Rutube\Transport
+     * @var Transport
      */
     protected $transport;
 
@@ -31,7 +33,7 @@ abstract class Entity
     }
 
     /**
-     * @return \Rutube\Transport
+     * @return Transport
      */
     public function getTransport()
     {

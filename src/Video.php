@@ -39,20 +39,21 @@ class Video extends Entity
             'category_id' => $category_id,
         ];
 
-        if ($callback_url) {
+        if ($callback_url !== null) {
             $params['callback_url'] = $callback_url;
         }
 
-        if ($errback_url) {
+        if ($errback_url !== null) {
             $params['errback_url'] = $errback_url;
         }
 
-        if ($query_fields) {
+        if ($query_fields !== null) {
             $params['query_fields'] = $query_fields;
         }
 
-        if ($extra) {
+        if ($extra !== null) {
             $params['extra'] = $extra;
+
         }
 
         return $this->getTransport()->uploadVideo($params);

@@ -9,19 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Rutube;
+namespace Rutube\Transports;
 
-/**
- * Class TransportFactory
- * @package Rutube
- */
 use Rutube\Exceptions\Exception;
 
 /**
  * Class Transport
- * @package Rutube
+ * @package Rutube\Transports
  */
-class Transport
+class DefaultTransport
 {
     /**
      * @var \Httpful\Request

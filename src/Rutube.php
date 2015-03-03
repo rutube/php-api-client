@@ -11,6 +11,8 @@
 
 namespace Rutube;
 
+use Rutube\Transports\DefaultTransport as Transport;
+
 /**
  * Class Rutube
  * @package Rutube
