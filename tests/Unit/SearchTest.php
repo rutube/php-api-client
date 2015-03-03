@@ -10,6 +10,7 @@
  */
 
 include_once('BaseTest.php');
+
 /**
  * Class SearchTest
  */
