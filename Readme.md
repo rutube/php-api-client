@@ -1,8 +1,8 @@
 Rutube PHP API Client
 ======================
-[![Build Status](https://travis-ci.org/rutube/php-api-client.svg?branch=master)](https://travis-ci.org/rutube/php-api-client)
-[![Latest Stable Version](https://poser.pugx.org/rutube/php-api-client/v/stable.svg)](https://packagist.org/packages/rutube/php-api-client)
-[![Code Climate](https://codeclimate.com/github/rutube/php-api-client/badges/gpa.svg)](https://codeclimate.com/github/rutube/php-api-client)
+[![Build Status](https://img.shields.io/travis/rutube/php-api-client/master.svg?style=flat-square)](https://travis-ci.org/rutube/php-api-client) 
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rutube/php-api-client.svg?style=flat-square)](https://scrutinizer-ci.com/g/rutube/php-api-client/?branch=master) 
+[![Latest Stable Version](https://img.shields.io/packagist/v/rutube/php-api-client.svg?style=flat-square)](https://packagist.org/packages/rutube/php-api-client) 
 
 ## Установка
 Установка через composer:
