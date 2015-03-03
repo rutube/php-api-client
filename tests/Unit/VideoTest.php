@@ -81,6 +81,27 @@ class VideoTest extends BaseTest
     /**
      * @dataProvider videoUploadSuccessProvider
      */
+    public function testUploadWithExtraParams($username, $password, $secure, $host, $videoParams)
+    {
+        $videoParamsExtra = [
+            'callback_url' => 'http://example.ru/success',
+            'errback_url' => 'http://example.ru/error',
+            'query_fields' => json_encode(['track_id', 'video_id']),
+            'extra' => json_encode(['ext_id' => 'PR1234567890'])
+        ];
+
+        $videoParams = array_merge($videoParams, $videoParamsExtra);
+
+        list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
+
+        $this->assertObjectHasAttribute('video_id', $data);
+        $this->assertObjectHasAttribute('track_id', $data);
+    }
+
+
+    /**
+     * @dataProvider videoUploadSuccessProvider
+     */
     public function testDeleteByVideoId($username, $password, $secure, $host, $videoParams)
     {
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
