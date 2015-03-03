@@ -79,3 +79,4 @@ cli.php
 
 coverage.clover
 apigen/
+coverage/
