@@ -48,7 +48,7 @@ class DefaultTransport
     protected $secure;
 
     /**
-     * @var \Rutube\Rutube
+     * @var string
      */
     protected $rutube;
 
