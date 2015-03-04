@@ -48,7 +48,7 @@ class Rutube
         $this->secure = $secure;
         $this->transport = new Transport($transport, $secure, $host);
 
-        if ($username && $password) {
+        if ($username !== null && $password !== null) {
             $this->transport->authorize($username, $password);
         }
     }
