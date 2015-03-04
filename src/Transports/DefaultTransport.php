@@ -100,9 +100,9 @@ class DefaultTransport
     ];
 
     /**
-     * @param $transport
-     * @param $secure
-     * @param $rutube
+     * @param string $transport
+     * @param bool $secure
+     * @param string $rutube
      * @throws Exception
      */
     public function __construct($transport, $secure, $rutube)
@@ -117,10 +117,10 @@ class DefaultTransport
 
         $this->client = new $trs[$transport]();
     }
-    
+
     /**
-     * @param $name
-     * @param $arguments
+     * @param string $name
+     * @param array $arguments
      * @return mixed
      * @throws \Rutube\Exceptions\ConnectionErrorException
      * @codeCoverageIgnore
@@ -129,6 +129,7 @@ class DefaultTransport
     {
         if (isset($this->map[$name])) {
             $args = explode(';', $this->map[$name]['params']);
+            $len = sizeof($args);
             $i = 0;
             $method = $args[0];
             $id = '';
@@ -136,7 +137,7 @@ class DefaultTransport
             $query = [];
             $file = [];
 
-            for ($j = 1; $j < sizeof($args); $j++) {
+            for ($j = 1; $j < $len; $j++) {
                 ${$args[$j]} = $arguments[$i];
                 $i++;
             }
@@ -149,8 +150,8 @@ class DefaultTransport
     }
 
     /**
-     * @param $username
-     * @param $password
+     * @param string $username
+     * @param string $password
      * @return $this
      */
     public function authorize($username, $password)
@@ -163,7 +164,7 @@ class DefaultTransport
     }
 
     /**
-     * @param $id
+     * @param string $id
      * @return bool
      */
     public function deleteVideo($id)
@@ -186,7 +187,7 @@ class DefaultTransport
     }
 
     /**
-     * @param $url
+     * @param string $url
      * @param array $query
      * @return string
      */
@@ -202,7 +203,7 @@ class DefaultTransport
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function isSecure()
     {
@@ -218,7 +219,7 @@ class DefaultTransport
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getToken()
     {
