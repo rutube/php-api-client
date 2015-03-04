@@ -17,6 +17,23 @@ use Rutube\Exceptions\Exception;
  * Низкоуровневое обращение к API
  *
  * @package Rutube\Transports
+ *
+ * @method mixed loadVideoPerson(array $query)
+ * @method mixed loadVideoPersonById($id, array $query)
+ * @method mixed loadTags()
+ * @method mixed loadVideoTags($id, array $query)
+ * @method mixed loadMetainfoTv(array $query)
+ * @method mixed loadMetainfoTvContentTypes($id)
+ * @method mixed loadMetainfoTvSeasons($id)
+ * @method mixed loadMetainfoTvVideos($id, array $query)
+ * @method mixed loadMetainfoTvLastEpisode($id, $query)
+ * @method mixed loadMetainfoContenttvs($id)
+ * @method mixed uploadVideo(array $params)
+ * @method mixed putVideo($id, $params)
+ * @method mixed getVideo($id)
+ * @method mixed patchVideo($id, $params)
+ * @method mixed addThumb($id, array $file)
+ * @method mixed publication($params)
  */
 class DefaultTransport
 {
@@ -53,6 +70,36 @@ class DefaultTransport
     ];
 
     /**
+     * @var array
+     */
+    protected $transports = [
+        'httpful' => '\Rutube\Clients\ClientHttpful',
+    ];
+
+    /**
+     * Карта маппинга простых методов на API Rutube
+     * @var array
+     */
+    protected $map = [
+        'loadVideoPerson' => ['params' => 'GET;query', 'url' => 'api/video/person/'],
+        'loadVideoPersonById' => ['params' => 'GET;id;query', 'url' => 'api/video/person/{id}/'],
+        'loadTags' => ['params' => 'GET', 'url' => 'api/tags/'],
+        'loadVideoTags' => ['params' => 'GET;id;query', 'url' => 'api/tags/video/{id}/'],
+        'loadMetainfoTv' => ['params' => 'GET;query', 'url' => 'api/metainfo/tv/'],
+        'loadMetainfoTvContentTypes' => ['params' => 'GET;id', 'url' => 'api/metainfo/tv/{id}/contenttvstype/'],
+        'loadMetainfoTvSeasons' => ['params' => 'GET;id', 'url' => 'api/metainfo/tv/{id}/season/'],
+        'loadMetainfoTvVideos' => ['params' => 'GET;id;query', 'url' => 'api/metainfo/tv/{id}/video/'],
+        'loadMetainfoTvLastEpisode' => ['params' => 'GET;id;query', 'url' => 'api/metainfo/tv/{id}/last_episode/'],
+        'loadMetainfoContenttvs' => ['params' => 'GET;id', 'url' => 'api/metainfo/contenttvs/{id}/'],
+        'uploadVideo' => ['params' => 'POST;params', 'url' => 'api/video/'],
+        'putVideo' => ['params' => 'PUT;id;params', 'url' => 'api/video/{id}/'],
+        'getVideo' => ['params' => 'GET;id', 'url' => 'api/video/{id}/'],
+        'patchVideo' => ['params' => 'PATCH;id;params', 'url' => 'api/video/{id}/'],
+        'addThumb' => ['params' => 'POST;id;file', 'url' => 'api/video/{id}/thumbnail/'],
+        'publication' => ['params' => 'POST;params', 'url' => 'api/video/publication/'],
+    ];
+
+    /**
      * @param $transport
      * @param $secure
      * @param $rutube
@@ -70,14 +117,36 @@ class DefaultTransport
 
         $this->client = new $trs[$transport]();
     }
-
+    
     /**
-     * @var array
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
+     * @codeCoverageIgnore
      */
-    protected $transports = [
-        'httpful' => '\Rutube\Clients\ClientHttpful',
-    ];
+    public function __call($name, $arguments)
+    {
+        if (isset($this->map[$name])) {
+            $args = explode(';', $this->map[$name]['params']);
+            $i = 0;
+            $method = $args[0];
+            $id = '';
+            $params = [];
+            $query = [];
+            $file = [];
 
+            for ($j = 1; $j < sizeof($args); $j++) {
+                ${$args[$j]} = $arguments[$i];
+                $i++;
+            }
+
+            $url = ($id !== '') ? str_replace('{id}', $id, $this->map[$name]['url']) : $this->map[$name]['url'];
+
+            return $this->call($method, $url, $params, $query, $file);
+
+        }
+    }
 
     /**
      * @param $username
@@ -94,163 +163,12 @@ class DefaultTransport
     }
 
     /**
-     * @param array $query
-     * @return mixed
-     */
-    public function loadVideoPerson(array $query)
-    {
-        return $this->call('GET', 'api/video/person/', [], $query);
-    }
-
-    /**
-     * @param $id
-     * @param array $query
-     * @return mixed
-     */
-    public function loadVideoPersonById($id, array $query)
-    {
-        return $this->call('GET', 'api/video/person/' . $id . '/', [], $query);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function loadTags()
-    {
-        return $this->call('GET', 'api/tags/');
-    }
-
-    /**
-     * @param $id
-     * @param $query
-     * @return mixed
-     */
-    public function loadVideoTags($id, array $query)
-    {
-        return $this->call('GET', 'api/tags/video/' . $id . '/', [], $query);
-    }
-
-    /**
-     * @param array $query
-     * @return mixed
-     */
-    public function loadMetainfoTv(array $query)
-    {
-        return $this->call('GET', 'api/metainfo/tv/', [], $query);
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function loadMetainfoTvContentTypes($id)
-    {
-        return $this->call('GET', 'api/metainfo/tv/' . $id . '/contenttvstype/');
-    }
-
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function loadMetainfoTvSeasons($id)
-    {
-        return $this->call('GET', 'api/metainfo/tv/' . $id . '/season/');
-    }
-
-    /**
-     * @param $id
-     * @param array $query
-     * @return mixed
-     */
-    public function loadMetainfoTvVideos($id, array $query)
-    {
-        return $this->call('GET', 'api/metainfo/tv/' . $id . '/video/', [], $query);
-    }
-
-    /**
-     * @param $id
-     * @param $query
-     * @return mixed
-     */
-    public function loadMetainfoTvLastEpisode($id, $query)
-    {
-        return $this->call('GET', 'api/metainfo/tv/' . $id . '/last_episode/', [], $query);
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function loadMetainfoContenttvs($id)
-    {
-        return $this->call('GET', 'api/metainfo/contenttvs/' . $id . '/');
-    }
-
-    /**
-     * @param array $params
-     * @return mixed
-     */
-    public function uploadVideo(array $params)
-    {
-        return $this->call('POST', 'api/video/', $params);
-    }
-
-    /**
      * @param $id
      * @return bool
      */
     public function deleteVideo($id)
     {
         return $this->call('DELETE', 'api/video/' . $id, [], [], [], true) == 204;
-    }
-
-    /**
-     * @param $id
-     * @param $params
-     * @return mixed
-     */
-    public function putVideo($id, $params)
-    {
-        return $this->call('PUT', 'api/video/' . $id . '/', $params);
-    }
-
-    /**
-     * @param $id
-     * @return bool
-     */
-    public function getVideo($id)
-    {
-        return $this->call('GET', 'api/video/' . $id . '/');
-    }
-
-    /**
-     * @param $id
-     * @param $params
-     * @return bool
-     */
-    public function patchVideo($id, $params)
-    {
-        return $this->call('PATCH', 'api/video/' . $id, $params);
-    }
-
-    /**
-     * @param $id
-     * @param $file
-     * @return mixed
-     */
-    public function addThumb($id, array $file)
-    {
-        return $this->call('POST', 'api/video/' . $id . '/thumbnail/', [], [], $file);
-    }
-
-    /**
-     * @param $params
-     * @return mixed
-     */
-    public function publication($params)
-    {
-        return $this->call('POST', 'api/video/publication/', $params);
     }
 
     /**
