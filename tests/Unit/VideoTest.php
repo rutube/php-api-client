@@ -23,15 +23,15 @@ class VideoTest extends BaseTest
     {
         $credentials = $this->defaultProvider();
 
-        return [
-            array_merge($credentials[0], [[
+        return array(
+            array_merge($credentials[0], array(array(
                 'url' => RUTUBE_VIDEO,
                 'description' => 'Description',
                 'title' => 'Title',
                 'isHidden' => 1,
                 'categoryId' => 13
-            ]]),
-        ];
+            )))
+        );
     }
 
     public function uploadVideo($username, $password, $secure, $host, $videoParams)
@@ -39,7 +39,7 @@ class VideoTest extends BaseTest
         $video = $this->getRutubeVideo($username, $password, $secure, $host);
         $data = $this->getUploadVideo($video, $videoParams);
 
-        return [$video, $data];
+        return array($video, $data);
     }
 
     /**
@@ -83,12 +83,12 @@ class VideoTest extends BaseTest
      */
     public function testUploadWithExtraParams($username, $password, $secure, $host, $videoParams)
     {
-        $videoParamsExtra = [
+        $videoParamsExtra = array(
             'callback_url' => 'http://example.ru/success',
             'errback_url' => 'http://example.ru/error',
-            'query_fields' => json_encode(['video_id']),
-            'extra' => json_encode(['ext_id' => 'PR1234567890'])
-        ];
+            'query_fields' => json_encode(array('video_id')),
+            'extra' => json_encode(array('ext_id' => 'PR1234567890'))
+        );
 
         $videoParams = array_merge($videoParams, $videoParamsExtra);
 
@@ -135,12 +135,12 @@ class VideoTest extends BaseTest
     {
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
 
-        $videoParams2 = [
+        $videoParams2 = array(
             'description' => 'New Description',
             'title' => 'New title',
             'isHidden' => 0,
             'categoryId' => 11
-        ];
+        );
 
         extract($videoParams2);
 
@@ -164,12 +164,12 @@ class VideoTest extends BaseTest
     {
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
 
-        $videoParams2 = [
+        $videoParams2 = array(
             'description' => 'New Description',
             'title' => 'New title',
             'isHidden' => 0,
             'categoryId' => 11
-        ];
+        );
 
         extract($videoParams2);
 

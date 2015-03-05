@@ -23,33 +23,33 @@ class SearchTest extends BaseTest
     {
         $credentials = $this->defaultProvider();
 
-        return [
-            array_merge($credentials[0], [1, 1]),
-            array_merge($credentials[0], [1, 2]),
-            array_merge($credentials[0], [2, 1]),
-        ];
+        return array(
+            array_merge($credentials[0], array(1, 1)),
+            array_merge($credentials[0], array(1, 2)),
+            array_merge($credentials[0], array(2, 1)),
+        );
     }
 
     public function paginationTagProvider()
     {
         $credentials = $this->defaultProvider();
 
-        return [
-            array_merge($credentials[0], [2270, 1, 20]),
-            array_merge($credentials[0], [2270, 1, 30]),
-            array_merge($credentials[0], [2270, 2, 40]),
-        ];
+        return array(
+            array_merge($credentials[0], array(2270, 1, 20)),
+            array_merge($credentials[0], array(2270, 1, 30)),
+            array_merge($credentials[0], array(2270, 2, 40)),
+        );
     }
 
     public function paginationProfileProvider()
     {
         $credentials = $this->defaultProvider();
 
-        return [
-            array_merge($credentials[0], [683751, 1, 20]),
-            array_merge($credentials[0], [683751, 1, 30]),
-            array_merge($credentials[0], [683751, 2, 40]),
-        ];
+        return array(
+            array_merge($credentials[0], array(683751, 1, 20)),
+            array_merge($credentials[0], array(683751, 1, 30)),
+            array_merge($credentials[0], array(683751, 2, 40)),
+        );
     }
 
     /**

@@ -16,12 +16,12 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 {
     public function defaultProvider()
     {
-        return [[USER_LOGIN, USER_PASS, true, RUTUBE_HOST]];
+        return array(array(USER_LOGIN, USER_PASS, true, RUTUBE_HOST));
     }
 
     public function defaultNotAuthProvider()
     {
-        return ['', '', true, RUTUBE_HOST];
+        return array('', '', true, RUTUBE_HOST);
     }
 
 

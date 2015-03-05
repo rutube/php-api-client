@@ -23,11 +23,11 @@ class RawTest extends BaseTest
     {
         $credentials = $this->defaultProvider();
 
-        return [
-            array_merge($credentials[0], [1, 1]),
-            array_merge($credentials[0], [1, 2]),
-            array_merge($credentials[0], [2, 1]),
-        ];
+        return array(
+            array_merge($credentials[0], array(1, 1)),
+            array_merge($credentials[0], array(1, 2)),
+            array_merge($credentials[0], array(2, 1)),
+        );
     }
 
     /**
@@ -43,7 +43,7 @@ class RawTest extends BaseTest
     public function testLoadVideoPerson($username, $password, $secure, $host, $page, $limit)
     {
         $rutube = $this->getRutube($username, $password, $secure, $host);
-        $list = $rutube->raw()->call('GET', 'api/video/person/', ['query' => ['page' => $page, 'limit' => $limit]]);
+        $list = $rutube->raw()->call('GET', 'api/video/person/', array('query' => array('page' => $page, 'limit' => $limit)));
 
         $this->assertObjectHasAttribute('per_page', $list);
         $this->assertObjectHasAttribute('page', $list);

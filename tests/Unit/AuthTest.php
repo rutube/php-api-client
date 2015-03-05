@@ -10,6 +10,7 @@
  */
 
 include_once('BaseTest.php');
+
 /**
  * Class FinderTest
  */
@@ -23,10 +24,10 @@ class AuthTest extends BaseTest
      */
     public function authProvider()
     {
-        return [
-            [USER_LOGIN, USER_PASS, true, RUTUBE_HOST],
-            [USER_LOGIN, USER_PASS, false, RUTUBE_HOST],
-        ];
+        return array(
+            array(USER_LOGIN, USER_PASS, true, RUTUBE_HOST),
+            array(USER_LOGIN, USER_PASS, false, RUTUBE_HOST),
+        );
     }
 
     /**
@@ -34,11 +35,10 @@ class AuthTest extends BaseTest
      */
     public function connectionErrorExceptionProvider()
     {
-        return [
-            [USER_LOGIN, USER_PASS, false, 'teststie.testzone'],
-            [USER_LOGIN, USER_PASS, true, 'teststie.testzone'],
-
-        ];
+        return array(
+            array(USER_LOGIN, USER_PASS, false, 'teststie.testzone'),
+            array(USER_LOGIN, USER_PASS, true, 'teststie.testzone'),
+        );
     }
 
     /**
@@ -46,14 +46,14 @@ class AuthTest extends BaseTest
      */
     public function badRequestExceptionProvider()
     {
-        return [
-            [$this->username, 'asdjalkj', false, RUTUBE_HOST],
-            [$this->username, 'asdas', true, RUTUBE_HOST],
-            ['asdad', 'asdas', false, RUTUBE_HOST],
-            ['asdad', 'asdas', true, RUTUBE_HOST],
-            ['aasdasd', $this->password, false, RUTUBE_HOST],
-            ['aasdasd', $this->password, true, RUTUBE_HOST],
-        ];
+        return array(
+            array($this->username, 'asdjalkj', false, RUTUBE_HOST),
+            array($this->username, 'asdas', true, RUTUBE_HOST),
+            array('asdad', 'asdas', false, RUTUBE_HOST),
+            array('asdad', 'asdas', true, RUTUBE_HOST),
+            array('aasdasd', $this->password, false, RUTUBE_HOST),
+            array('aasdasd', $this->password, true, RUTUBE_HOST),
+        );
     }
 
     /**
