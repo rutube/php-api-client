@@ -81,10 +81,10 @@ class ClientHttpful implements ClientInterface
      */
     public function setHeaders($token = null)
     {
-        $headers = [
+        $headers = array(
             'Accept' => 'application/json',
             'User-Agent' => '',
-        ];
+        );
 
         if ($token) {
             $headers['Authorization'] = 'Token ' . $token;

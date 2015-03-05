@@ -26,14 +26,14 @@ class Raw extends Entity
      * @param array $options Параметры запроса: ['params'=>[], 'query'=>[], 'file'=>[], 'return_code'=>false]
      * @return mixed
      */
-    public function call($method, $url, $options = [])
+    public function call($method, $url, $options = array())
     {
         return $this->getTransport()->call(
             $method,
             $url,
-            isset($options['params']) ? $options['params'] : [],
-            isset($options['query']) ? $options['query'] : [],
-            isset($options['file']) ? $options['file'] : [],
+            isset($options['params']) ? $options['params'] : array(),
+            isset($options['query']) ? $options['query'] : array(),
+            isset($options['file']) ? $options['file'] : array(),
             isset($options['return_code']) ? $options['return_code'] : false
         );
     }

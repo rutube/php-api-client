@@ -34,13 +34,13 @@ class Video extends Entity
      */
     public function upload($url, $title = '', $description = '', $is_hidden = 1, $category_id = 13, $callback_url = null, $errback_url = null, $query_fields = null, $extra = null)
     {
-        $params = [
+        $params = array(
             'url' => $url,
             'title' => $title,
             'description' => $description,
             'is_hidden' => $is_hidden,
             'category_id' => $category_id,
-        ];
+        );
 
         if ($callback_url !== null) {
             $params['callback_url'] = $callback_url;
@@ -95,12 +95,12 @@ class Video extends Entity
      */
     public function putVideo($id, $title, $description, $is_hidden, $category_id)
     {
-        $params = [
+        $params = array(
             'title' => $title,
             'description' => $description,
             'is_hidden' => $is_hidden,
             'category' => $category_id
-        ];
+        );
 
         return $this->getTransport()->putVideo($id, $params);
     }
@@ -117,7 +117,7 @@ class Video extends Entity
      */
     public function patchVideo($id, $title = null, $description = null, $is_hidden = null, $category_id = null)
     {
-        $params = [];
+        $params = array();
 
         if (!is_null($title)) {
             $params['title'] = $title;
@@ -147,7 +147,7 @@ class Video extends Entity
      */
     public function addThumb($id, $filename)
     {
-        $file = ['file' => $filename];
+        $file = array('file' => $filename);
         return $this->getTransport()->addThumb($id, $file);
     }
 
@@ -160,10 +160,10 @@ class Video extends Entity
      */
     public function publication($id, $date)
     {
-        $params = [
+        $params = array(
             'video' => $id,
             'timestamp' => $date,
-        ];
+        );
 
         return $this->getTransport()->publication($params);
 

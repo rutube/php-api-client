@@ -43,14 +43,14 @@ class DefaultTransport
     /**
      * @var array
      */
-    protected $exceptions = [
+    protected $exceptions = array(
         400 => 'Rutube\Exceptions\BadRequestException',
         401 => 'Rutube\Exceptions\UnauthorizedException',
         403 => 'Rutube\Exceptions\ForbiddenException',
         404 => 'Rutube\Exceptions\NotFoundException',
         405 => 'Rutube\Exceptions\MethodNotAllowedException',
         500 => 'Rutube\Exceptions\ServerErrorException'
-    ];
+    );
 
     /**
      * @param string $transport
@@ -74,9 +74,9 @@ class DefaultTransport
     /**
      * @var array
      */
-    protected $transports = [
+    protected $transports = array(
         'httpful' => '\Rutube\Clients\ClientHttpful',
-    ];
+    );
 
 
     /**
@@ -86,7 +86,7 @@ class DefaultTransport
      */
     public function authorize($username, $password)
     {
-        $response = $this->call('POST', 'api/accounts/token_auth/', ['username' => $username, 'password' => $password]);
+        $response = $this->call('POST', 'api/accounts/token_auth/', array('username' => $username, 'password' => $password));
 
         $this->token = $response->token;
 
@@ -99,7 +99,7 @@ class DefaultTransport
      */
     public function loadVideoPerson(array $query)
     {
-        return $this->call('GET', 'api/video/person/', [], $query);
+        return $this->call('GET', 'api/video/person/', array(), $query);
     }
 
     /**
@@ -109,7 +109,7 @@ class DefaultTransport
      */
     public function loadVideoPersonById($id, array $query)
     {
-        return $this->call('GET', 'api/video/person/' . $id . '/', [], $query);
+        return $this->call('GET', 'api/video/person/' . $id . '/', array(), $query);
     }
 
     /**
@@ -127,7 +127,7 @@ class DefaultTransport
      */
     public function loadVideoTags($id, array $query)
     {
-        return $this->call('GET', 'api/tags/video/' . $id . '/', [], $query);
+        return $this->call('GET', 'api/tags/video/' . $id . '/', array(), $query);
     }
 
     /**
@@ -136,7 +136,7 @@ class DefaultTransport
      */
     public function loadMetainfoTv(array $query)
     {
-        return $this->call('GET', 'api/metainfo/tv/', [], $query);
+        return $this->call('GET', 'api/metainfo/tv/', array(), $query);
     }
 
     /**
@@ -165,7 +165,7 @@ class DefaultTransport
      */
     public function loadMetainfoTvVideos($id, array $query)
     {
-        return $this->call('GET', 'api/metainfo/tv/' . $id . '/video/', [], $query);
+        return $this->call('GET', 'api/metainfo/tv/' . $id . '/video/', array(), $query);
     }
 
     /**
@@ -175,7 +175,7 @@ class DefaultTransport
      */
     public function loadMetainfoTvLastEpisode($id, $query)
     {
-        return $this->call('GET', 'api/metainfo/tv/' . $id . '/last_episode/', [], $query);
+        return $this->call('GET', 'api/metainfo/tv/' . $id . '/last_episode/', array(), $query);
     }
 
     /**
@@ -202,7 +202,7 @@ class DefaultTransport
      */
     public function deleteVideo($id)
     {
-        return $this->call('DELETE', 'api/video/' . $id, [], [], [], true) == 204;
+        return $this->call('DELETE', 'api/video/' . $id, array(), array(), array(), true) == 204;
     }
 
     /**
@@ -241,7 +241,7 @@ class DefaultTransport
      */
     public function addThumb($id, array $file)
     {
-        return $this->call('POST', 'api/video/' . $id . '/thumbnail/', [], [], $file);
+        return $this->call('POST', 'api/video/' . $id . '/thumbnail/', array(), array(), $file);
     }
 
     /**
@@ -272,7 +272,7 @@ class DefaultTransport
      * @param array $query
      * @return string
      */
-    protected function getUrl($url, $query = [])
+    protected function getUrl($url, $query = array())
     {
         $url = $this->getProtocol() . $this->rutube . '/' . $url;
 
@@ -318,7 +318,7 @@ class DefaultTransport
      *
      * @throws \Rutube\Exceptions\ConnectionErrorException
      */
-    public function call($method, $url, $params = [], $query = [], $file = [], $return_code = false)
+    public function call($method, $url, $params = array(), $query = array(), $file = array(), $return_code = false)
     {
         try {
             /** @var \Httpful\Request $request */

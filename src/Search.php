@@ -27,7 +27,7 @@ class Search extends Entity
      */
     public function loadVideoPerson($page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadVideoPerson(['page' => $page, 'limit' => $limit]);
+        return $this->getTransport()->loadVideoPerson(array('page' => $page, 'limit' => $limit));
     }
 
     /**
@@ -40,7 +40,7 @@ class Search extends Entity
      */
     public function loadVideoPersonById($id, $page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadVideoPersonById($id, ['page' => $page, 'limit' => $limit]);
+        return $this->getTransport()->loadVideoPersonById($id, array('page' => $page, 'limit' => $limit));
 
     }
 
@@ -64,7 +64,7 @@ class Search extends Entity
      */
     public function loadVideoTags($id, $page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadVideoTags($id, ['page' => $page, 'limit' => $limit]);
+        return $this->getTransport()->loadVideoTags($id, array('page' => $page, 'limit' => $limit));
 
     }
 
@@ -77,7 +77,7 @@ class Search extends Entity
      */
     public function loadTv($page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadMetainfoTv(['page' => $page, 'limit' => $limit]);
+        return $this->getTransport()->loadMetainfoTv(array('page' => $page, 'limit' => $limit));
     }
 
     /**
@@ -112,7 +112,7 @@ class Search extends Entity
      */
     public function loadTvVideos($id, $page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadMetainfoTvVideos($id, ['page' => $page, 'limit' => $limit]);
+        return $this->getTransport()->loadMetainfoTvVideos($id, array('page' => $page, 'limit' => $limit));
     }
 
     /**
@@ -125,7 +125,7 @@ class Search extends Entity
      */
     public function loadTvLastSeasonVideos($id, $page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadMetainfoTvLastEpisode($id, ['page' => $page, 'limit' => $limit]);
+        return $this->getTransport()->loadMetainfoTvLastEpisode($id, array('page' => $page, 'limit' => $limit));
     }
 
     /**
