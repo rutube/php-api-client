@@ -11,18 +11,16 @@
 
 namespace Rutube\Clients;
 
-use Httpful\Request;
-
 /**
- * HTTP-клиент на основе Httpful
+ * Mock HTTP-клиент
  * @package Rutube\Clients
  */
-class ClientHttpful implements ClientInterface
+class ClientMock implements ClientInterface
 {
     /**
-     * @var Request
+     * @var array
      */
-    public $request;
+    private static $queue = array();
 
     /**
      * @param string $uri
@@ -30,8 +28,6 @@ class ClientHttpful implements ClientInterface
      */
     public function get($uri)
     {
-        $this->request = Request::get($uri);
-
         return $this;
     }
 
@@ -41,8 +37,6 @@ class ClientHttpful implements ClientInterface
      */
     public function post($uri)
     {
-        $this->request = Request::post($uri);
-
         return $this;
     }
 
@@ -52,8 +46,6 @@ class ClientHttpful implements ClientInterface
      */
     public function put($uri)
     {
-        $this->request = Request::put($uri);
-
         return $this;
     }
 
@@ -63,8 +55,6 @@ class ClientHttpful implements ClientInterface
      */
     public function delete($uri)
     {
-        $this->request = Request::delete($uri);
-
         return $this;
     }
 
@@ -74,28 +64,15 @@ class ClientHttpful implements ClientInterface
      */
     public function patch($uri)
     {
-        $this->request = Request::patch($uri);
-
         return $this;
     }
 
     /**
-     * @param $token
+     * @param string $token
      * @return $this
      */
     public function setHeaders($token = null)
     {
-        $headers = array(
-            'Accept' => 'application/json',
-            'User-Agent' => '',
-        );
-
-        if ($token) {
-            $headers['Authorization'] = 'Token ' . $token;
-        }
-
-        $this->request->addHeaders($headers);
-
         return $this;
     }
 
@@ -105,8 +82,6 @@ class ClientHttpful implements ClientInterface
      */
     public function setBody($body)
     {
-        $this->request->body($body);
-
         return $this;
     }
 
@@ -117,7 +92,7 @@ class ClientHttpful implements ClientInterface
      */
     public function send()
     {
-        return $this->request->send();
+        return self::$queue ? array_shift(self::$queue) : self::createMock();
     }
 
     /**
@@ -125,8 +100,6 @@ class ClientHttpful implements ClientInterface
      */
     public function asJson()
     {
-        $this->request->sendsJson();
-
         return $this;
     }
 
@@ -136,8 +109,33 @@ class ClientHttpful implements ClientInterface
      */
     public function attach(array $files)
     {
-        $this->request->attach($files);
-
         return $this;
+    }
+
+    /**
+     * @param array $params
+     * @param int $http_code
+     */
+    public static function setMock(array $params = array(), $http_code = 200)
+    {
+        self::$queue[] = self::createMock($params, $http_code);
+    }
+
+    /**
+     * @param array $params
+     * @param int $http_code
+     * @return \stdClass
+     */
+    private static function createMock(array $params = array(), $http_code = 200)
+    {
+        $obj = new \stdClass();
+        $obj->body = new \stdClass();
+        $obj->meta_data = array('http_code' => $http_code);
+
+        foreach ($params as $key => $value) {
+            $obj->body->{$key} = $value;
+        }
+
+        return $obj;
     }
 }

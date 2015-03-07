@@ -34,7 +34,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
      */
     protected function getRutube($username, $password, $secure, $host)
     {
-        return new \Rutube\Rutube($username, $password, $secure, $host);
+        return new \Rutube\Rutube($username, $password, $secure, $host, TRANSPORT);
     }
 
     /**

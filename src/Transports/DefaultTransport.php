@@ -76,6 +76,7 @@ class DefaultTransport
      */
     protected $transports = array(
         'httpful' => '\Rutube\Clients\ClientHttpful',
+        'mock' => '\Rutube\Clients\ClientMock',
     );
 
 
