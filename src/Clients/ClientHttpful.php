@@ -20,6 +20,11 @@ use Httpful\Request;
 class ClientHttpful implements ClientInterface
 {
     /**
+     * Таймаут HTTP-запроса
+     */
+    const TIMEOUT = 60;
+
+    /**
      * @var Request
      */
     public $request;
@@ -117,7 +122,7 @@ class ClientHttpful implements ClientInterface
      */
     public function send()
     {
-        return $this->request->send();
+        return $this->request->timeout(self::TIMEOUT)->send();
     }
 
     /**
