@@ -18,6 +18,12 @@ namespace Rutube\Clients;
 class ClientMock implements ClientInterface
 {
     /**
+     * Пользовательский User-Agent
+     * @var string|null
+     */
+    public static $userAgent = null;
+
+    /**
      * @var array
      */
     private static $queue = array();

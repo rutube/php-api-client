@@ -25,6 +25,12 @@ class ClientHttpful implements ClientInterface
     const TIMEOUT = 60;
 
     /**
+     * Пользовательский User-Agent
+     * @var string|null
+     */
+    public static $userAgent = null;
+
+    /**
      * @var Request
      */
     public $request;
@@ -122,6 +128,11 @@ class ClientHttpful implements ClientInterface
      */
     public function send()
     {
+        // устанавливаем пользовательский User-Agent
+        if (self::$userAgent !== null) {
+            $this->request->addHeader('User-Agent', self::$userAgent);
+        }
+
         return $this->request->timeout(self::TIMEOUT)->send();
     }
 

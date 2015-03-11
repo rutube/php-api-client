@@ -11,6 +11,8 @@
 
 namespace Rutube\Tests;
 
+use Rutube\Clients\ClientHttpful;
+
 include_once('BaseTest.php');
 
 /**
@@ -62,5 +64,14 @@ class RutubeTest extends BaseTest
         $r = new \Rutube\Rutube();
 
         $this->assertInstanceOf('\Rutube\Raw', $r->raw());
+    }
+
+    public function testUserAgent()
+    {
+        ClientHttpful::$userAgent = 'TestUserAgent';
+
+        $this->assertInstanceOf('\Rutube\Rutube', new \Rutube\Rutube(USER_LOGIN, USER_PASS));
+
+        ClientHttpful::$userAgent = null;
     }
 }
