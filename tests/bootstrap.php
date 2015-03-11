@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+namespace Rutube\Tests;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 const USER_LOGIN = 'squirrel@squirrel.ru';

@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+namespace Rutube\Tests;
+
 include_once('BaseTest.php');
 
 /**
@@ -46,7 +48,7 @@ class VideoTest extends BaseTest
      * @param $video
      * @param $id
      * @return array|null
-     * @throws Exception
+     * @throws \Exception
      */
     public function getSafeVideo($video, $id)
     {
