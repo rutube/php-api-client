@@ -134,6 +134,14 @@ class ClientHttpful implements ClientInterface
      */
     public function send()
     {
+        if ($this->userAgent !== null) {
+            $this->request->addHeader('User-Agent', $this->userAgent);
+        }
+
+        if ($this->x_real_ip != null) {
+            $this->request->addHeader('X-Real-IP', $this->x_real_ip);
+        }
+
         return $this->request->timeout(self::TIMEOUT)->send();
     }
 
@@ -165,7 +173,7 @@ class ClientHttpful implements ClientInterface
      */
     public function setUserAgent($userAgent)
     {
-        $this->request->addHeader('User-Agent', $userAgent);
+        $this->userAgent = $userAgent;
 
         return $this;
     }
@@ -177,7 +185,7 @@ class ClientHttpful implements ClientInterface
      */
     public function setXRealIP($ip)
     {
-        $this->request->addHeader('X-Real-IP', $ip);
+        $this->x_real_ip = $ip;
 
         return $this;
     }
