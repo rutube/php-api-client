@@ -104,7 +104,7 @@ class ClientHttpful implements ClientInterface
     {
         $headers = array(
             'Accept' => 'application/json',
-            'User-Agent' => '',
+            'User-Agent' => 'Rutube_PHPClient',
         );
 
         if ($token) {

@@ -157,9 +157,7 @@ class Transport
                 ->{strtolower($method)}($this->getUrl($url, $query))
                 ->asJson();
 
-            if ($this->getToken()) {
-                $request = $request->setHeaders($this->getToken());
-            }
+            $request = $request->setHeaders($this->getToken());
 
             if (!empty($params)) {
                 $request = $request->setBody($params);
