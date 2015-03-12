@@ -44,11 +44,11 @@ class VideoTest extends BaseTest
         $credentials = $this->defaultProvider();
 
         return array(
-            array_merge($credentials[0], array(array('id' => 'dd632e002bed82fefc890d0acc0c9ddd', 'quality' => null, 'userAgent' => null, 'userIP' => null))),
-            array_merge($credentials[0], array(array('id' => 'dd632e002bed82fefc890d0acc0c9ddd', 'quality' => 1, 'userAgent' => null, 'userIP' => null))),
-            array_merge($credentials[0], array(array('id' => 'dd632e002bed82fefc890d0acc0c9ddd', 'quality' => 2, 'userAgent' => 'TestUserAgent', 'userIP' => null))),
-            array_merge($credentials[0], array(array('id' => 'dd632e002bed82fefc890d0acc0c9ddd', 'quality' => 2, 'userAgent' => null, 'userIP' => '213.180.204.3'))),
-            array_merge($credentials[0], array(array('id' => 'dd632e002bed82fefc890d0acc0c9ddd', 'quality' => 2, 'userAgent' => 'TestUserAgent', 'userIP' => '213.180.204.3'))),
+            array_merge($credentials[0], array(array('id' => '93e8b83c4ab14bcf93b6f066dcceb0e2', 'quality' => null, 'userAgent' => null, 'userIP' => null))),
+            array_merge($credentials[0], array(array('id' => '93e8b83c4ab14bcf93b6f066dcceb0e2', 'quality' => 1, 'userAgent' => null, 'userIP' => null))),
+            array_merge($credentials[0], array(array('id' => '93e8b83c4ab14bcf93b6f066dcceb0e2', 'quality' => 2, 'userAgent' => 'TestUserAgent', 'userIP' => null))),
+            array_merge($credentials[0], array(array('id' => '93e8b83c4ab14bcf93b6f066dcceb0e2', 'quality' => 2, 'userAgent' => null, 'userIP' => '213.180.204.3'))),
+            array_merge($credentials[0], array(array('id' => '93e8b83c4ab14bcf93b6f066dcceb0e2', 'quality' => 2, 'userAgent' => 'TestUserAgent', 'userIP' => '213.180.204.3'))),
         );
     }
 
