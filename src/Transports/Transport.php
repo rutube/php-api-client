@@ -155,9 +155,8 @@ class Transport
             /** @var \Httpful\Request $request */
             $request = $this->client
                 ->{strtolower($method)}($this->getUrl($url, $query))
-                ->asJson();
-
-            $request = $request->setHeaders($this->getToken());
+                ->asJson()
+                ->setHeaders($this->getToken());
 
             if (!empty($params)) {
                 $request = $request->setBody($params);
