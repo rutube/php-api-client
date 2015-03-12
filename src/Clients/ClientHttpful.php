@@ -28,18 +28,18 @@ class ClientHttpful implements ClientInterface
      * Пользовательский User-Agent
      * @var string|null
      */
-    public static $userAgent = null;
+    protected $userAgent = null;
 
     /**
      * Передавать в заголовке X-Real-IP указанный IP-адрес
      * @var string|null
      */
-    public static $x_real_ip = null;
+    protected $x_real_ip = null;
 
     /**
      * @var Request
      */
-    public $request;
+    protected $request;
 
     /**
      * @param string $uri
@@ -134,16 +134,6 @@ class ClientHttpful implements ClientInterface
      */
     public function send()
     {
-        // устанавливаем пользовательский User-Agent
-        if (self::$userAgent !== null) {
-            $this->request->addHeader('User-Agent', self::$userAgent);
-        }
-
-        // устанавливаем кастомный IP в заголовках
-        if (self::$x_real_ip !== null) {
-            $this->request->addHeader('X-Real-IP', self::$x_real_ip);
-        }
-
         return $this->request->timeout(self::TIMEOUT)->send();
     }
 
@@ -164,6 +154,30 @@ class ClientHttpful implements ClientInterface
     public function attach(array $files)
     {
         $this->request->attach($files);
+
+        return $this;
+    }
+
+    /**
+     * Устанавливает User-Agent для текущего запроса
+     * @param string $userAgent
+     * @return $this
+     */
+    public function setUserAgent($userAgent)
+    {
+        $this->request->addHeader('User-Agent', $userAgent);
+
+        return $this;
+    }
+
+    /**
+     * Устанавливает загловок X-Real-IP для текущего запроса
+     * @param string $ip
+     * @return $this
+     */
+    public function setXRealIP($ip)
+    {
+        $this->request->addHeader('X-Real-IP', $ip);
 
         return $this;
     }

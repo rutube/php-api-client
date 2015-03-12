@@ -168,4 +168,28 @@ class Video extends Entity
         return $this->getTransport()->publication($params);
 
     }
+
+    /**
+     * Получение информации для проигрывания видео
+     *
+     * @param string $id ID ролика
+     * @param int|null $quality количество выдаваемых качеств
+     * @param string|null $userAgent
+     * @param string|null $userIP IP от имени которого выполнялся запрос
+     * @return mixed
+     */
+    public function getPlayOptions($id, $quality = null, $userAgent = null, $userIP = null)
+    {
+        $query = ($quality !== null) ? array('quality' => $quality) : array();
+
+        if ($userAgent !== null) {
+            $this->getTransport()->getClient()->setUserAgent($userAgent);
+        }
+
+        if ($userIP !== null) {
+            $this->getTransport()->getClient()->setXRealIP($userIP);
+        }
+
+        return $this->getTransport()->getVideoPlayOptions($id, $query);
+    }
 }

@@ -84,6 +84,7 @@ class DefaultTransport
      * @param string $username
      * @param string $password
      * @return $this
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function authorize($username, $password)
     {
@@ -97,6 +98,7 @@ class DefaultTransport
     /**
      * @param array $query
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadVideoPerson(array $query)
     {
@@ -107,6 +109,7 @@ class DefaultTransport
      * @param int $id
      * @param array $query
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadVideoPersonById($id, array $query)
     {
@@ -115,6 +118,7 @@ class DefaultTransport
 
     /**
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadTags()
     {
@@ -125,6 +129,7 @@ class DefaultTransport
      * @param int $id
      * @param array $query
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadVideoTags($id, array $query)
     {
@@ -134,6 +139,7 @@ class DefaultTransport
     /**
      * @param array $query
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadMetainfoTv(array $query)
     {
@@ -143,6 +149,7 @@ class DefaultTransport
     /**
      * @param string $id
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadMetainfoTvContentTypes($id)
     {
@@ -153,6 +160,7 @@ class DefaultTransport
     /**
      * @param string $id
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadMetainfoTvSeasons($id)
     {
@@ -163,6 +171,7 @@ class DefaultTransport
      * @param string $id
      * @param array $query
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadMetainfoTvVideos($id, array $query)
     {
@@ -173,6 +182,7 @@ class DefaultTransport
      * @param string $id
      * @param array $query
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadMetainfoTvLastEpisode($id, $query)
     {
@@ -182,6 +192,7 @@ class DefaultTransport
     /**
      * @param string $id
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function loadMetainfoContenttvs($id)
     {
@@ -189,8 +200,20 @@ class DefaultTransport
     }
 
     /**
+     * @param string $id
+     * @param array $query
+     * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
+     */
+    public function getVideoPlayOptions($id, array $query)
+    {
+        return $this->call('GET', 'api/play/options/' . $id . '/', array(), $query);
+    }
+
+    /**
      * @param array $params
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function uploadVideo(array $params)
     {
@@ -200,6 +223,7 @@ class DefaultTransport
     /**
      * @param string $id
      * @return bool
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function deleteVideo($id)
     {
@@ -210,6 +234,7 @@ class DefaultTransport
      * @param string $id
      * @param array $params
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function putVideo($id, $params)
     {
@@ -219,6 +244,7 @@ class DefaultTransport
     /**
      * @param string $id
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function getVideo($id)
     {
@@ -229,6 +255,7 @@ class DefaultTransport
      * @param string $id
      * @param array $params
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function patchVideo($id, $params)
     {
@@ -239,6 +266,7 @@ class DefaultTransport
      * @param string $id
      * @param array $file
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function addThumb($id, array $file)
     {
@@ -248,6 +276,7 @@ class DefaultTransport
     /**
      * @param array $params
      * @return mixed
+     * @throws \Rutube\Exceptions\ConnectionErrorException
      */
     public function publication($params)
     {
@@ -306,6 +335,14 @@ class DefaultTransport
     public function getToken()
     {
         return $this->token;
+    }
+
+    /**
+     * @return \Httpful\Request
+     */
+    public function getClient()
+    {
+        return $this->client;
     }
 
     /**

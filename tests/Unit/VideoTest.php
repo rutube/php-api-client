@@ -36,6 +36,22 @@ class VideoTest extends BaseTest
         );
     }
 
+    /**
+     * @return array
+     */
+    public function videoExistsProvider()
+    {
+        $credentials = $this->defaultProvider();
+
+        return array(
+            array_merge($credentials[0], array(array('id' => 'fa2273a9d25ac1753e513bd1af6c2e64', 'quality' => null, 'userAgent' => null, 'userIP' => null))),
+            array_merge($credentials[0], array(array('id' => 'fa2273a9d25ac1753e513bd1af6c2e64', 'quality' => 1, 'userAgent' => null, 'userIP' => null))),
+            array_merge($credentials[0], array(array('id' => 'fa2273a9d25ac1753e513bd1af6c2e64', 'quality' => 2, 'userAgent' => 'TestUserAgent', 'userIP' => null))),
+            array_merge($credentials[0], array(array('id' => 'fa2273a9d25ac1753e513bd1af6c2e64', 'quality' => 2, 'userAgent' => null, 'userIP' => '213.180.204.3'))),
+            array_merge($credentials[0], array(array('id' => 'fa2273a9d25ac1753e513bd1af6c2e64', 'quality' => 2, 'userAgent' => 'TestUserAgent', 'userIP' => '213.180.204.3'))),
+        );
+    }
+
     public function uploadVideo($username, $password, $secure, $host, $videoParams)
     {
         $video = $this->getRutubeVideo($username, $password, $secure, $host);
@@ -230,5 +246,23 @@ class VideoTest extends BaseTest
     {
         $video = $this->getRutubeVideo($username, $password, $secure, $host);
         $video->getVideo('unknown_id');
+    }
+
+    /**
+     * @group only
+     * @dataProvider videoExistsProvider
+     */
+    public function testGetVideoPlayOptions($username, $password, $secure, $host, $params)
+    {
+        extract($params);
+
+        $res = $this->getRutubeVideo($username, $password, $secure, $host)->getPlayOptions($id, $quality, $userAgent, $userIP);
+
+        $this->assertObjectHasAttribute('video_balancer', $res);
+        $playlists = explode(',', $res->video_balancer->default);
+
+        if ($quality !== null) {
+            $this->assertEquals(count($playlists), $quality);
+        }
     }
 }

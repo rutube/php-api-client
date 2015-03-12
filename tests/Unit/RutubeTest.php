@@ -65,14 +65,4 @@ class RutubeTest extends BaseTest
 
         $this->assertInstanceOf('\Rutube\Raw', $r->raw());
     }
-
-    public function testUserAgent()
-    {
-        ClientHttpful::$userAgent = 'TestUserAgent';
-        ClientHttpful::$x_real_ip = '127.0.0.1';
-
-        $this->assertInstanceOf('\Rutube\Rutube', new \Rutube\Rutube(USER_LOGIN, USER_PASS));
-
-        ClientHttpful::$userAgent = null;
-    }
 }

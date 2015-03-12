@@ -34,4 +34,8 @@ interface ClientInterface
     public function attach(array $files);
 
     public function send();
+
+    public function setUserAgent($userAgent);
+
+    public function setXRealIP($ip);
 }
