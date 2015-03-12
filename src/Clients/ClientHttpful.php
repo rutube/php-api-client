@@ -31,6 +31,12 @@ class ClientHttpful implements ClientInterface
     public static $userAgent = null;
 
     /**
+     * Передавать в заголовке X-Real-IP указанный IP-адрес
+     * @var string|null
+     */
+    public static $x_real_ip = null;
+
+    /**
      * @var Request
      */
     public $request;
@@ -131,6 +137,11 @@ class ClientHttpful implements ClientInterface
         // устанавливаем пользовательский User-Agent
         if (self::$userAgent !== null) {
             $this->request->addHeader('User-Agent', self::$userAgent);
+        }
+
+        // устанавливаем кастомный IP в заголовках
+        if (self::$x_real_ip !== null) {
+            $this->request->addHeader('X-Real-IP', self::$x_real_ip);
         }
 
         return $this->request->timeout(self::TIMEOUT)->send();
