@@ -138,7 +138,7 @@ class ClientHttpful implements ClientInterface
             $this->request->addHeader('User-Agent', $this->userAgent);
         }
 
-        if ($this->x_real_ip != null) {
+        if ($this->x_real_ip !== null) {
             $this->request->addHeader('X-Real-IP', $this->x_real_ip);
         }
 
