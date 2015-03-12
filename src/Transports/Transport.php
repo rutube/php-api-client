@@ -35,7 +35,7 @@ class Transport
     /**
      * @var string
      */
-    protected $token;
+    protected $token = null;
 
     /**
      * @var array
