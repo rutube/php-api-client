@@ -1,5 +1,7 @@
 Rutube PHP API Client
 ======================
+
+[![Join the chat at https://gitter.im/rutube/php-api-client](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rutube/php-api-client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://img.shields.io/travis/rutube/php-api-client/master.svg?style=flat-square)](https://travis-ci.org/rutube/php-api-client) 
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rutube/php-api-client.svg?style=flat-square)](https://scrutinizer-ci.com/g/rutube/php-api-client/?branch=master) 
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/rutube/php-api-client.svg?style=flat-square)](https://scrutinizer-ci.com/g/rutube/php-api-client/?branch=master) 
