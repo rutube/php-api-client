@@ -25,14 +25,12 @@ class ClientHttpful implements ClientInterface
     const TIMEOUT = 60;
 
     /**
-     * Пользовательский User-Agent
-     * @var string|null
+     * @var string|null Пользовательский User-Agent
      */
     protected $userAgent = null;
 
     /**
-     * Передавать в заголовке X-Real-IP указанный IP-адрес
-     * @var string|null
+     * @var string|null Передавать в заголовке X-Real-IP указанный IP-адрес
      */
     protected $x_real_ip = null;
 
@@ -42,8 +40,9 @@ class ClientHttpful implements ClientInterface
     protected $request;
 
     /**
+     * Запрос GET
      * @param string $uri
-     * @return $this
+     * @return mixed
      */
     public function get($uri)
     {
@@ -53,8 +52,9 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
+     * Запрос POST
      * @param string $uri
-     * @return $this
+     * @return mixed
      */
     public function post($uri)
     {
@@ -64,8 +64,9 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
+     * Заропс PUT
      * @param string $uri
-     * @return $this
+     * @return mixed
      */
     public function put($uri)
     {
@@ -75,8 +76,9 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
+     * Запрос DELETE
      * @param string $uri
-     * @return $this
+     * @return mixed
      */
     public function delete($uri)
     {
@@ -86,8 +88,9 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
-     * @param string $uri
-     * @return $this
+     * Запрос PATCH
+     * @param $uri
+     * @return mixed
      */
     public function patch($uri)
     {
@@ -97,8 +100,9 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
-     * @param $token
-     * @return $this
+     * Установка заголовков для корректной работы с Rutube
+     * @param string $token
+     * @return mixed
      */
     public function setHeaders($token = null)
     {
@@ -117,8 +121,9 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
+     * Тело запроса
      * @param array $body
-     * @return $this
+     * @return mixed
      */
     public function setBody($body)
     {
@@ -128,6 +133,7 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
+     * Выполнение запроса
      * @return \Httpful\associative|string
      *
      * @throws \Httpful\Exception\ConnectionErrorException
@@ -146,6 +152,7 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
+     * Выставление заголовка принятия ответа в формате Json
      * @return $this
      */
     public function asJson()
@@ -156,8 +163,9 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
+     * Отсылка файла через POST-запрос
      * @param array $files
-     * @return $this
+     * @return mixed
      */
     public function attach(array $files)
     {
@@ -179,9 +187,9 @@ class ClientHttpful implements ClientInterface
     }
 
     /**
-     * Устанавливает загловок X-Real-IP для текущего запроса
+     * Установка клиентского IP-адреса
      * @param string $ip
-     * @return $this
+     * @return mixed
      */
     public function setXRealIP($ip)
     {
