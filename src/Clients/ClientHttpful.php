@@ -111,7 +111,7 @@ class ClientHttpful implements ClientInterface
             'User-Agent' => 'Rutube_PHPClient',
         );
 
-        if ($token) {
+        if ($token !== null) {
             $headers['Authorization'] = 'Token ' . $token;
         }
 
