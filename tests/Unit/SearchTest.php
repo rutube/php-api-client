@@ -98,21 +98,25 @@ class SearchTest extends BaseTest
 
     /**
      * @group slow
-     * @dataProvider defaultProvider
+     * @dataProvider paginationTagProvider
      *
      * @param $username
      * @param $password
      * @param $secure
      * @param $host
      */
-    public function testLoadTags($username, $password, $secure, $host)
+    public function testLoadTags($username, $password, $secure, $host, $tag, $page, $limit)
     {
         $search = $this->getRutubeSearch($username, $password, $secure, $host);
 
-        $list = $search->loadTags();
+        $list = $search->loadTags($page, $limit);
 
-        $this->assertTrue(is_array($list));
-        $this->assertGreaterThan(0, count($list));
+        $this->assertObjectHasAttribute('per_page', $list);
+        $this->assertObjectHasAttribute('page', $list);
+        $this->assertObjectHasAttribute('results', $list);
+
+        $this->assertEquals($page, $list->page);
+        $this->assertEquals($limit, $list->per_page);
     }
 
     /**

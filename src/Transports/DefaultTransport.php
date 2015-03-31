@@ -60,11 +60,12 @@ class DefaultTransport extends Transport
 
     /**
      * @return mixed
+     * @param array $query
      * @throws \Rutube\Exceptions\ConnectionErrorException
      */
-    public function loadTags()
+    public function loadTags(array $query)
     {
-        return $this->call('GET', 'api/tags/');
+        return $this->call('GET', 'api/tags/', array(), $query);
     }
 
     /**

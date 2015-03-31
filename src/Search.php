@@ -46,11 +46,13 @@ class Search extends Entity
     /**
      * Загрузка справочника тегов
      *
+     * @param int $page Страница
+     * @param int $limit Кол-во результатов на странице
      * @return mixed
      */
-    public function loadTags()
+    public function loadTags($page = 1, $limit = 20)
     {
-        return $this->getTransport()->loadTags();
+        return $this->getTransport()->loadTags(array('page' => $page, 'limit' => $limit));
     }
 
     /**
