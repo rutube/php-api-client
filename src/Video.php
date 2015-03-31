@@ -26,14 +26,23 @@ class Video extends Entity
      * @param string $description Описание
      * @param int $is_hidden Признак видимости, 1 - ролик скрыт
      * @param int $category_id ID категории
-     * @param string|null $callback_url URL, вызываемый по завершению обработки ролика
+     * @param string|null $callback_url callbacl-URL по завершению обработки ролика
      * @param string|null $errback_url URL, вызываемый для сообщения об ошибке
      * @param string|null $query_fields Перечень возвращаемых полей
      * @param string|null $extra Дополнительные параметры для колбэков
      * @return mixed
      */
-    public function upload($url, $title = '', $description = '', $is_hidden = 1, $category_id = 13, $callback_url = null, $errback_url = null, $query_fields = null, $extra = null)
-    {
+    public function upload(
+        $url,
+        $title = '',
+        $description = '',
+        $is_hidden = 1,
+        $category_id = 13,
+        $callback_url = null,
+        $errback_url = null,
+        $query_fields = null,
+        $extra = null
+    ) {
         $params = array(
             'url' => $url,
             'title' => $title,
@@ -148,6 +157,7 @@ class Video extends Entity
     public function addThumb($id, $filename)
     {
         $file = array('file' => $filename);
+
         return $this->getTransport()->addThumb($id, $file);
     }
 
@@ -166,7 +176,6 @@ class Video extends Entity
         );
 
         return $this->getTransport()->publication($params);
-
     }
 
     /**

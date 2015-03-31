@@ -144,7 +144,7 @@ class Transport
      * @param array $params Параметры зпроса
      * @param array $query Запрос
      * @param array $file Путь к файлу
-     * @param bool $return_code Если true - вместо текста ответа возвращается HTTP-код ответа
+     * @param bool $return_code Если true - возвращается HTTP-код ответа
      * @return mixed
      *
      * @throws \Rutube\Exceptions\ConnectionErrorException

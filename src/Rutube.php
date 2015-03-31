@@ -43,8 +43,13 @@ class Rutube
      * @param string $host Домен API
      * @param string $transport Транспорт
      */
-    public function __construct($username = null, $password = null, $secure = true, $host = 'rutube.ru', $transport = 'httpful')
-    {
+    public function __construct(
+        $username = null,
+        $password = null,
+        $secure = true,
+        $host = 'rutube.ru',
+        $transport = 'httpful'
+    ) {
         $this->secure = $secure;
         $this->transport = new Transport($transport, $secure, $host);
 

@@ -26,7 +26,11 @@ class DefaultTransport extends Transport
      */
     public function authorize($username, $password)
     {
-        $response = $this->call('POST', 'api/accounts/token_auth/', array('username' => $username, 'password' => $password));
+        $response = $this->call(
+            'POST',
+            'api/accounts/token_auth/',
+            array('username' => $username, 'password' => $password)
+        );
 
         $this->token = $response->token;
 

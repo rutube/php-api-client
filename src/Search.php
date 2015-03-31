@@ -41,7 +41,6 @@ class Search extends Entity
     public function loadVideoPersonById($id, $page = 1, $limit = 20)
     {
         return $this->getTransport()->loadVideoPersonById($id, array('page' => $page, 'limit' => $limit));
-
     }
 
     /**
@@ -65,7 +64,6 @@ class Search extends Entity
     public function loadVideoTags($id, $page = 1, $limit = 20)
     {
         return $this->getTransport()->loadVideoTags($id, array('page' => $page, 'limit' => $limit));
-
     }
 
     /**
@@ -81,7 +79,7 @@ class Search extends Entity
     }
 
     /**
-     * Получение списка возможных типов контента для указанного ТВ-шоу
+     * Получение списка возможных типов контента для ТВ-шоу
      *
      * @param string $id ID ТВ-шоу
      * @return mixed
@@ -116,7 +114,7 @@ class Search extends Entity
     }
 
     /**
-     * Получение списка роликов для указанного ТВ-шоу для последнего сезона
+     * Получение списка роликов для ТВ-шоу для последнего сезона
      *
      * @param string $id ID ТВ-шоу
      * @param int $page Страница

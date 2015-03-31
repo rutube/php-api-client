@@ -23,7 +23,13 @@ class Raw extends Entity
      *
      * @param string $method Метод: GET, POST, PUT, PATCH, DELETE
      * @param string $url URL метода API, например: api/video/person/
-     * @param array $options Параметры запроса: ['params'=>[], 'query'=>[], 'file'=>[], 'return_code'=>false]
+     * @param array $options Параметры запроса:
+     *                          [
+     *                              'params'=>[],
+     *                              'query'=>[],
+     *                              'file'=>[],
+     *                              'return_code'=>false
+     *                          ]
      * @return mixed
      */
     public function call($method, $url, $options = array())
