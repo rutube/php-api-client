@@ -45,7 +45,7 @@ $errback_url  = 'http://host.host/error';   // В случае ошибки за
 // Получить объект видео:
 $video  = $rutube->video();
 
-// Загрузить видео. В ответе содержатся track_id (deprecated) и video_id:
+// Загрузить видео. В ответе содержится video_id:
 $data = $video->upload($url, $title, $description, $categoryId, $callback_url, $errback_url);
 
 // Обновить параметры видео (описание, заголовок, видимость и категорию):

@@ -93,7 +93,6 @@ class VideoTest extends BaseTest
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
 
         $this->assertObjectHasAttribute('video_id', $data);
-        $this->assertObjectHasAttribute('track_id', $data);
     }
 
     /**
@@ -113,7 +112,6 @@ class VideoTest extends BaseTest
         list($video, $data) = $this->uploadVideo($username, $password, $secure, $host, $videoParams);
 
         $this->assertObjectHasAttribute('video_id', $data);
-        $this->assertObjectHasAttribute('track_id', $data);
     }
 
 
@@ -142,7 +140,6 @@ class VideoTest extends BaseTest
         $this->assertEquals($videoParams['title'], $vo->title);
         $this->assertEquals($videoParams['isHidden'], $vo->is_hidden);
         $this->assertEquals($videoParams['categoryId'], $vo->category->id);
-        $this->assertEquals($data->track_id, $vo->track_id);
         $this->assertEquals($data->video_id, $vo->id);
     }
 
@@ -171,7 +168,6 @@ class VideoTest extends BaseTest
         $this->assertEquals($videoParams2['title'], $vo->title);
         $this->assertEquals($videoParams2['isHidden'], $vo->is_hidden);
         $this->assertEquals($videoParams2['categoryId'], $vo->category->id);
-        $this->assertEquals($data->track_id, $vo->track_id);
         $this->assertEquals($data->video_id, $vo->id);
     }
 
@@ -200,7 +196,6 @@ class VideoTest extends BaseTest
         $this->assertEquals($videoParams2['title'], $vo->title);
         $this->assertEquals($videoParams2['isHidden'], $vo->is_hidden);
         $this->assertEquals($videoParams2['categoryId'], $vo->category->id);
-        $this->assertEquals($data->track_id, $vo->track_id);
         $this->assertEquals($data->video_id, $vo->id);
     }
 
@@ -218,7 +213,6 @@ class VideoTest extends BaseTest
 
         $vo = $this->getSafeVideo($video, $data->video_id);
 
-        $this->assertEquals($data->track_id, $vo->track_id);
         $this->assertEquals($data->video_id, $vo->id);
         $this->assertEquals($res->thumbnail_url, $vo->thumbnail_url);
     }

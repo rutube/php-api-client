@@ -291,7 +291,5 @@ class SearchTest extends BaseTest
         $list = $search->loadTvVideoRelations($episode);
 
         $this->assertObjectHasAttribute('video_id', $list);
-        $this->assertObjectHasAttribute('track_id', $list);
-
     }
 }
