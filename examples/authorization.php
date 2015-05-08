@@ -8,7 +8,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
  * Авторизация
  **/
 try {
-    $rutube = new \Rutube\Rutube('squirrel@squirrel.ru', '99880011', /*secure*/ true);
+    $rutube = new \Rutube\Rutube('squirrel@squirrel.ru', '998800', /*secure*/ true);
 
     echo "Авторизован: " . ($rutube->isAuthorized() ? "да" : "нет") . "\n"; // result: true/false
     echo "Соединение:  " . ($rutube->isSecure() ? "https" : "http") . "\n"; // Возвращает тип соединения. В случае https - true; в случае http - false
