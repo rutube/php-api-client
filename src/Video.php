@@ -74,7 +74,7 @@ class Video extends Entity
      * Удаление ролика
      *
      * @param string $id ID ролика
-     * @return boolean Ролик поставлен в очередь на удаление
+     * @return bool Ролик поставлен в очередь на удаление
      */
     public function deleteVideo($id)
     {
