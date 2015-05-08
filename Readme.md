@@ -123,7 +123,7 @@ try {
 } catch (Exceptions\ConnectionErrorException $ex) {
     echo "Сервер не доступен";
 } catch (Exceptions\BadRequestException $ex) {
-    echo "Не корректные параметры авторизации";
+    echo "Некорректные параметры авторизации";
 }
 ```
 
