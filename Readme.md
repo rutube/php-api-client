@@ -74,7 +74,7 @@ $search = $rutube->search();
 $search->loadVideoPersonById($personId, $page = 1, $limit = 20);
 
 // Показать теги:
-$search->loadTags();
+$search->loadTags($page = 1, $limit = 20);
 
 // Показать видео по тегу:
 $search->loadVideoTags($tagId, $page = 1, $limit = 20);
