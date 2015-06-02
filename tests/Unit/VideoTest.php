@@ -259,4 +259,22 @@ class VideoTest extends BaseTest
             $this->assertEquals(count($playlists), $quality);
         }
     }
+
+    /**
+     * @group only
+     * @dataProvider videoExistsProvider
+     */
+    public function testGetVideoPlayOptionsWithReferer($username, $password, $secure, $host, $params)
+    {
+        extract($params);
+
+        $res = $this->getRutubeVideo($username, $password, $secure, $host)->getPlayOptions($id, $quality, $userAgent, $userIP, 'http://rutube.ru');
+
+        $this->assertObjectHasAttribute('video_balancer', $res);
+        $playlists = explode(',', $res->video_balancer->default);
+
+        if ($quality !== null) {
+            $this->assertEquals(count($playlists), $quality);
+        }
+    }
 }

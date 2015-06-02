@@ -185,9 +185,10 @@ class Video extends Entity
      * @param int|null $quality количество выдаваемых качеств
      * @param string|null $userAgent
      * @param string|null $userIP IP от имени которого выполнялся запрос
+     * @param string|null $referer Referer от имени которого выполнялся запрос
      * @return mixed
      */
-    public function getPlayOptions($id, $quality = null, $userAgent = null, $userIP = null)
+    public function getPlayOptions($id, $quality = null, $userAgent = null, $userIP = null, $referer = null)
     {
         $query = ($quality !== null) ? array('quality' => $quality) : array();
 
@@ -197,6 +198,10 @@ class Video extends Entity
 
         if ($userIP !== null) {
             $this->getTransport()->getClient()->setXRealIP($userIP);
+        }
+
+        if ($referer !== null) {
+            $query['referer'] = $referer;
         }
 
         return $this->getTransport()->getVideoPlayOptions($id, $query);
