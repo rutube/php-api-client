@@ -48,7 +48,7 @@ $video  = $rutube->video();
 // Загрузить видео. В ответе содержится video_id:
 $data = $video->upload($url, $title, $descr, $isHidden, $categoryId, $callback_url, $errback_url);
 
-// Обновить параметры видео (описание, заголовок, видимость и категорию):
+// Обновить параметры видео (заголовок, описание, видимость и категорию):
 $video->patchVideo($data->video_id, $title, $descr, $isHidden, $categoryId);
 
 // Частично обновить параметры видео:
