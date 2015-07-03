@@ -46,10 +46,16 @@ $errback_url  = 'http://host.host/error';   // В случае ошибки за
 $video  = $rutube->video();
 
 // Загрузить видео. В ответе содержится video_id:
-$data = $video->upload($url, $title, $description, $categoryId, $callback_url, $errback_url);
+$data = $video->upload($url, $title, $descr, $isHidden, $categoryId, $callback_url, $errback_url);
 
-// Обновить параметры видео (описание, заголовок, видимость и категорию):
-$video->patchVideo($data->video_id, $descr, $title, $isHidden, $categoryId);
+// Обновить параметры видео (заголовок, описание, видимость и категорию):
+$video->patchVideo($data->video_id, $title, $descr, $isHidden, $categoryId);
+
+// Частично обновить параметры видео:
+//  описание и категорию:
+$video->patchVideo($data->video_id, null, $descr, null, $categoryId);
+//  только заголовок:
+$video->patchVideo($data->video_id, $title);
 
 // Удалить видео:
 $video->deleteVideo($data->video_id);
