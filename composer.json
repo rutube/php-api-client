@@ -16,7 +16,7 @@
   "license": "Apache 2.0",
   "require": {
     "php": ">=5.3.3",
-    "nategood/httpful": "0.2.17"
+    "nategood/httpful": "0.2.19"
   },
   "require-dev": {
     "phpunit/phpunit": "4.5.*",

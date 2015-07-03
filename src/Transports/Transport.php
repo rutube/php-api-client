@@ -171,10 +171,10 @@ class Transport
             throw new \Rutube\Exceptions\ConnectionErrorException($e->getMessage(), $e->getCode());
         }
 
-        if (isset($this->exceptions[$response->meta_data['http_code']])) {
-            throw new $this->exceptions[$response->meta_data['http_code']]();
+        if (isset($this->exceptions[$response->code])) {
+            throw new $this->exceptions[$response->code]();
         }
 
-        return $return_code ? $response->meta_data['http_code'] : $response->body;
+        return $return_code ? $response->code : $response->body;
     }
 }
