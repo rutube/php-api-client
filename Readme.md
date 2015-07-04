@@ -115,6 +115,7 @@ $search->loadVideoPerson($page = 1, $limit = 20);
  - Подключить автолоадер API-клиента
 
 Пример использования библиотеки в описанном выше ключе см. examples/without-composer/rutube-client-without-composer.php
+По-умолчанию загрузчик ищет код библиотеки по пути ./src, указать новый путь можно выставив константу RUTUBE_CLIENT_SRC_DIR.
 
 ## Обработка ошибок
 Все ошибки передаются через Exceptions соответствующего класса.
