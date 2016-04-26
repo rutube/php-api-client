@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Rutube\Rutube | PHP client for Rutube API</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?08b23951ef4599ca9cbf1f902d0e8290c9653ddd">
+	<link rel="stylesheet" href="resources/style.css?062e9e59e0b8c44fbaaded5b7ffc21f907b78669">
+
+</head>
+
+<body>
+	<div id="navigation" class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a href="index.html" class="brand">PHP client for Rutube API</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li>
+							<a href="namespace-Rutube.html" title="Summary of Rutube"><span>Namespace</span></a>
+						</li>
+						<li class="active">
+<span>Class</span>						</li>
+
+
+
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="left">
+	<div id="menu">
+		<form id="search" class="form-search">
+			<input type="hidden" name="cx" value="">
+			<input type="hidden" name="ie" value="UTF-8">
+			<input type="text" name="q" class="search-query" placeholder="Search">
+		</form>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Rutube.html">
+							Rutube<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Rutube.Clients.html">
+							Clients						</a>
+							</li>
+					<li>
+						<a href="namespace-Rutube.Exceptions.html">
+							Exceptions						</a>
+							</li>
+					<li>
+						<a href="namespace-Rutube.Transports.html">
+							Transports						</a>
+							</li>
+								</ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Rutube.Account.html">Account</a></li>
+				<li><a href="class-Rutube.Entity.html">Entity</a></li>
+				<li><a href="class-Rutube.Raw.html">Raw</a></li>
+				<li class="active"><a href="class-Rutube.Rutube.html">Rutube</a></li>
+				<li><a href="class-Rutube.Search.html">Search</a></li>
+				<li><a href="class-Rutube.Video.html">Video</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Rutube</h1>
+
+
+	<div class="description">
+	<p>Корневой класс работы с библиотекой</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Rutube.html">Rutube</a><br>
+		<b>Package:</b> Rutube<br>
+
+			<b>Located at</b> Rutube.php		<br>
+	</div>
+
+
+
+		<h2>Methods summary</h2>
+		<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code>__construct( <span>string|null <var>$username</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$password</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$secure</var> = <span class="php-keyword1">true</span></span>, <span>string <var>$host</var> = <span class="php-quote">'rutube.ru'</span></span>, <span>string <var>$transport</var> = <span class="php-quote">'httpful'</span> </span> )</code>
+
+			<div class="description short">
+				<p>Инициализация</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Инициализация</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$username</var></dt>
+						<dd>логин Rutube</dd>
+						<dt><var>$password</var></dt>
+						<dd>пароль</dd>
+						<dt><var>$secure</var></dt>
+						<dd>Использовать https</dd>
+						<dt><var>$host</var></dt>
+						<dd>Домен API</dd>
+						<dt><var>$transport</var></dt>
+						<dd>Транспорт</dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="isAuthorized" id="_isAuthorized">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_isAuthorized">#</a>
+			<code>isAuthorized( )</code>
+
+			<div class="description short">
+				<p>Авторизован ли пользователь</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Авторизован ли пользователь</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="isSecure" id="_isSecure">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_isSecure">#</a>
+			<code>isSecure( )</code>
+
+			<div class="description short">
+				<p>Используется ли безопасное соединение</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Используется ли безопасное соединение</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="video" id="_video">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Rutube.Video.html">Rutube\Video</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_video">#</a>
+			<code>video( )</code>
+
+			<div class="description short">
+				<p>Стартовая точка работы с видео</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Стартовая точка работы с видео</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Rutube.Video.html">Rutube\Video</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="account" id="_account">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Rutube.Account.html">Rutube\Account</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_account">#</a>
+			<code>account( )</code>
+
+			<div class="description short">
+				<p>Стартовая точка работы с аккаунтом</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Стартовая точка работы с аккаунтом</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Rutube.Account.html">Rutube\Account</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="search" id="_search">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Rutube.Search.html">Rutube\Search</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_search">#</a>
+			<code>search( )</code>
+
+			<div class="description short">
+				<p>Стартовая точка поиска через API</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Стартовая точка поиска через API</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Rutube.Search.html">Rutube\Search</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="raw" id="_raw">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Rutube.Raw.html">Rutube\Raw</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_raw">#</a>
+			<code>raw( )</code>
+
+			<div class="description short">
+				<p>Стартовая точка прямых запросов к Rutube</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Стартовая точка прямых запросов к Rutube</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Rutube.Raw.html">Rutube\Raw</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getTransport" id="_getTransport">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Rutube.Transports.DefaultTransport.html">Rutube\Transports\DefaultTransport</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getTransport">#</a>
+			<code>getTransport( )</code>
+
+			<div class="description short">
+				<p>Возвращает текущий транспорт</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Возвращает текущий транспорт</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Rutube.Transports.DefaultTransport.html">Rutube\Transports\DefaultTransport</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		</table>
+
+
+
+		<h3>Magic methods summary</h3>
+
+
+
+
+
+
+
+
+		<h2>Properties summary</h2>
+		<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="transport" id="$transport">
+			<td class="attributes"><code>
+				protected  
+				<code><a href="class-Rutube.Transports.DefaultTransport.html">Rutube\Transports\DefaultTransport</a></code>
+			</code></td>
+
+			<td class="name">
+<var>$transport</var>
+				<div class="description short">
+					<p>Транспорт выполнения запроса к API</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Транспорт выполнения запроса к API</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$transport" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="secure" id="$secure">
+			<td class="attributes"><code>
+				protected  
+				boolean
+			</code></td>
+
+			<td class="name">
+<var>$secure</var>
+				<div class="description short">
+					<p>Признак выполнения запросов через https</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Признак выполнения запросов через https</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$secure" class="anchor">#</a>
+					<code><span class="php-keyword1">false</span></code>
+				</div>
+			</td>
+		</tr>
+		</table>
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		PHP client for Rutube API API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Rutube\Search | PHP client for Rutube API</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?08b23951ef4599ca9cbf1f902d0e8290c9653ddd">
+	<link rel="stylesheet" href="resources/style.css?062e9e59e0b8c44fbaaded5b7ffc21f907b78669">
+
+</head>
+
+<body>
+	<div id="navigation" class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a href="index.html" class="brand">PHP client for Rutube API</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li>
+							<a href="namespace-Rutube.html" title="Summary of Rutube"><span>Namespace</span></a>
+						</li>
+						<li class="active">
+<span>Class</span>						</li>
+
+
+
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="left">
+	<div id="menu">
+		<form id="search" class="form-search">
+			<input type="hidden" name="cx" value="">
+			<input type="hidden" name="ie" value="UTF-8">
+			<input type="text" name="q" class="search-query" placeholder="Search">
+		</form>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Rutube.html">
+							Rutube<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Rutube.Clients.html">
+							Clients						</a>
+							</li>
+					<li>
+						<a href="namespace-Rutube.Exceptions.html">
+							Exceptions						</a>
+							</li>
+					<li>
+						<a href="namespace-Rutube.Transports.html">
+							Transports						</a>
+							</li>
+								</ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Rutube.Account.html">Account</a></li>
+				<li><a href="class-Rutube.Entity.html">Entity</a></li>
+				<li><a href="class-Rutube.Raw.html">Raw</a></li>
+				<li><a href="class-Rutube.Rutube.html">Rutube</a></li>
+				<li class="active"><a href="class-Rutube.Search.html">Search</a></li>
+				<li><a href="class-Rutube.Video.html">Video</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Search</h1>
+
+
+	<div class="description">
+	<p>Поиск через API Rutube</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+			<a href="class-Rutube.Entity.html"><span>Rutube\Entity</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Rutube\Search</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Rutube.html">Rutube</a><br>
+		<b>Package:</b> Rutube<br>
+
+			<b>Located at</b> Search.php		<br>
+	</div>
+
+
+
+		<h2>Methods summary</h2>
+		<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="loadVideoPerson" id="_loadVideoPerson">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadVideoPerson">#</a>
+			<code>loadVideoPerson( <span>integer <var>$page</var> = <span class="php-num">1</span></span>, <span>integer <var>$limit</var> = <span class="php-num">20</span></span> )</code>
+
+			<div class="description short">
+				<p>Получение списка собственных роликов</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение списка собственных роликов</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$page</var></dt>
+						<dd>Страница</dd>
+						<dt><var>$limit</var></dt>
+						<dd>Кол-во результатов на странице</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadVideoPersonById" id="_loadVideoPersonById">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadVideoPersonById">#</a>
+			<code>loadVideoPersonById( <span>integer <var>$id</var></span>, <span>integer <var>$page</var> = <span class="php-num">1</span></span>, <span>integer <var>$limit</var> = <span class="php-num">20</span></span> )</code>
+
+			<div class="description short">
+				<p>Получение публичного списка роликов пользователя</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение публичного списка роликов пользователя</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID пользователя</dd>
+						<dt><var>$page</var></dt>
+						<dd>Страница</dd>
+						<dt><var>$limit</var></dt>
+						<dd>Кол-во результатов на странице</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadTags" id="_loadTags">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadTags">#</a>
+			<code>loadTags( <span>integer <var>$page</var> = <span class="php-num">1</span></span>, <span>integer <var>$limit</var> = <span class="php-num">20</span></span> )</code>
+
+			<div class="description short">
+				<p>Загрузка справочника тегов</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Загрузка справочника тегов</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$page</var></dt>
+						<dd>Страница</dd>
+						<dt><var>$limit</var></dt>
+						<dd>Кол-во результатов на странице</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadVideoTags" id="_loadVideoTags">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadVideoTags">#</a>
+			<code>loadVideoTags( <span>integer <var>$id</var></span>, <span>integer <var>$page</var> = <span class="php-num">1</span></span>, <span>integer <var>$limit</var> = <span class="php-num">20</span></span> )</code>
+
+			<div class="description short">
+				<p>Получение списка роликов по тегу</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение списка роликов по тегу</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID тега</dd>
+						<dt><var>$page</var></dt>
+						<dd>Страница</dd>
+						<dt><var>$limit</var></dt>
+						<dd>Кол-во результатов на странице</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadTv" id="_loadTv">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadTv">#</a>
+			<code>loadTv( <span>integer <var>$page</var> = <span class="php-num">1</span></span>, <span>integer <var>$limit</var> = <span class="php-num">20</span></span> )</code>
+
+			<div class="description short">
+				<p>Получение списка доступных ТВ-шоу</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение списка доступных ТВ-шоу</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$page</var></dt>
+						<dd>Страница</dd>
+						<dt><var>$limit</var></dt>
+						<dd>Кол-во результатов на странице</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadTvTypes" id="_loadTvTypes">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadTvTypes">#</a>
+			<code>loadTvTypes( <span>string <var>$id</var></span> )</code>
+
+			<div class="description short">
+				<p>Получение списка возможных типов контента для ТВ-шоу</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение списка возможных типов контента для ТВ-шоу</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ТВ-шоу</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadTvSeasons" id="_loadTvSeasons">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadTvSeasons">#</a>
+			<code>loadTvSeasons( <span>string <var>$id</var></span> )</code>
+
+			<div class="description short">
+				<p>Получение списка сезонов для указанного ТВ-шоу</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение списка сезонов для указанного ТВ-шоу</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ТВ-шоу</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadTvVideos" id="_loadTvVideos">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadTvVideos">#</a>
+			<code>loadTvVideos( <span>string <var>$id</var></span>, <span>integer <var>$page</var> = <span class="php-num">1</span></span>, <span>integer <var>$limit</var> = <span class="php-num">20</span></span> )</code>
+
+			<div class="description short">
+				<p>Получение списка роликов для указанного ТВ-шоу</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение списка роликов для указанного ТВ-шоу</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ТВ-шоу</dd>
+						<dt><var>$page</var></dt>
+						<dd>Страница</dd>
+						<dt><var>$limit</var></dt>
+						<dd>Кол-во результатов на странице</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadTvLastSeasonVideos" id="_loadTvLastSeasonVideos">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadTvLastSeasonVideos">#</a>
+			<code>loadTvLastSeasonVideos( <span>string <var>$id</var></span>, <span>integer <var>$page</var> = <span class="php-num">1</span></span>, <span>integer <var>$limit</var> = <span class="php-num">20</span></span> )</code>
+
+			<div class="description short">
+				<p>Получение списка роликов для ТВ-шоу для последнего сезона</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение списка роликов для ТВ-шоу для последнего сезона</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ТВ-шоу</dd>
+						<dt><var>$page</var></dt>
+						<dd>Страница</dd>
+						<dt><var>$limit</var></dt>
+						<dd>Кол-во результатов на странице</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="loadTvVideoRelations" id="_loadTvVideoRelations">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_loadTvVideoRelations">#</a>
+			<code>loadTvVideoRelations( <span>string <var>$id</var></span> )</code>
+
+			<div class="description short">
+				<p>Получение информации о связях видео с ТВ-шоу</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение информации о связях видео с ТВ-шоу</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID эпизода</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		</table>
+
+		<h3>Methods inherited from <a href="class-Rutube.Entity.html#methods">Rutube\Entity</a></h3>
+		<p class="elementList">
+			<code><a href="class-Rutube.Entity.html#___construct">__construct()</a></code>, 
+			<code><a href="class-Rutube.Entity.html#_getTransport">getTransport()</a></code>, 
+			<code><a href="class-Rutube.Entity.html#_setTransport">setTransport()</a></code>
+		</p>
+
+
+		<h3>Magic methods summary</h3>
+
+
+
+
+
+
+
+
+		<h2>Properties summary</h2>
+
+		<h3>Properties inherited from <a href="class-Rutube.Entity.html#properties">Rutube\Entity</a></h3>
+		<p class="elementList">
+			<code><a href="class-Rutube.Entity.html#$transport"><var>$transport</var></a></code>
+		</p>
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		PHP client for Rutube API API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

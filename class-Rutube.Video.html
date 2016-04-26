@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Rutube\Video | PHP client for Rutube API</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?08b23951ef4599ca9cbf1f902d0e8290c9653ddd">
+	<link rel="stylesheet" href="resources/style.css?062e9e59e0b8c44fbaaded5b7ffc21f907b78669">
+
+</head>
+
+<body>
+	<div id="navigation" class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a href="index.html" class="brand">PHP client for Rutube API</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li>
+							<a href="namespace-Rutube.html" title="Summary of Rutube"><span>Namespace</span></a>
+						</li>
+						<li class="active">
+<span>Class</span>						</li>
+
+
+
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="left">
+	<div id="menu">
+		<form id="search" class="form-search">
+			<input type="hidden" name="cx" value="">
+			<input type="hidden" name="ie" value="UTF-8">
+			<input type="text" name="q" class="search-query" placeholder="Search">
+		</form>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Rutube.html">
+							Rutube<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Rutube.Clients.html">
+							Clients						</a>
+							</li>
+					<li>
+						<a href="namespace-Rutube.Exceptions.html">
+							Exceptions						</a>
+							</li>
+					<li>
+						<a href="namespace-Rutube.Transports.html">
+							Transports						</a>
+							</li>
+								</ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Rutube.Account.html">Account</a></li>
+				<li><a href="class-Rutube.Entity.html">Entity</a></li>
+				<li><a href="class-Rutube.Raw.html">Raw</a></li>
+				<li><a href="class-Rutube.Rutube.html">Rutube</a></li>
+				<li><a href="class-Rutube.Search.html">Search</a></li>
+				<li class="active"><a href="class-Rutube.Video.html">Video</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Video</h1>
+
+
+	<div class="description">
+	<p>Работа с видео</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+			<a href="class-Rutube.Entity.html"><span>Rutube\Entity</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Rutube\Video</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Rutube.html">Rutube</a><br>
+		<b>Package:</b> Rutube<br>
+
+			<b>Located at</b> Video.php		<br>
+	</div>
+
+
+
+		<h2>Methods summary</h2>
+		<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="upload" id="_upload">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_upload">#</a>
+			<code>upload( <span>string <var>$url</var></span>, <span>string <var>$title</var> = <span class="php-quote">''</span></span>, <span>string <var>$description</var> = <span class="php-quote">''</span></span>, <span>integer <var>$is_hidden</var> = <span class="php-num">1</span></span>, <span>integer <var>$category_id</var> = <span class="php-num">13</span></span>, <span>string|null <var>$callback_url</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$errback_url</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$query_fields</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$extra</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+			<div class="description short">
+				<p>Загрузка видео</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Загрузка видео</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$url</var></dt>
+						<dd>URL по которому находится скачиваемый ролик</dd>
+						<dt><var>$title</var></dt>
+						<dd>Название</dd>
+						<dt><var>$description</var></dt>
+						<dd>Описание</dd>
+						<dt><var>$is_hidden</var></dt>
+						<dd>Признак видимости, 1 - ролик скрыт</dd>
+						<dt><var>$category_id</var></dt>
+						<dd>ID категории</dd>
+						<dt><var>$callback_url</var></dt>
+						<dd>callbacl-URL по завершению обработки ролика</dd>
+						<dt><var>$errback_url</var></dt>
+						<dd>URL, вызываемый для сообщения об ошибке</dd>
+						<dt><var>$query_fields</var></dt>
+						<dd>Перечень возвращаемых полей</dd>
+						<dt><var>$extra</var></dt>
+						<dd>Дополнительные параметры для колбэков</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="deleteVideo" id="_deleteVideo">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_deleteVideo">#</a>
+			<code>deleteVideo( <span>string <var>$id</var></span> )</code>
+
+			<div class="description short">
+				<p>Удаление ролика</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Удаление ролика</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ролика</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean<br>Ролик поставлен в очередь на удаление
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getVideo" id="_getVideo">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getVideo">#</a>
+			<code>getVideo( <span>string <var>$id</var></span> )</code>
+
+			<div class="description short">
+				<p>Получени информации о ролике</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получени информации о ролике</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ролика</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="putVideo" id="_putVideo">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_putVideo">#</a>
+			<code>putVideo( <span>string <var>$id</var></span>, <span>string <var>$title</var></span>, <span>string <var>$description</var></span>, <span>integer <var>$is_hidden</var></span>, <span>integer <var>$category_id</var></span> )</code>
+
+			<div class="description short">
+				<p>Обновить информацию о ролике</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Обновить информацию о ролике</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ролика</dd>
+						<dt><var>$title</var></dt>
+						<dd>Название</dd>
+						<dt><var>$description</var></dt>
+						<dd>Описание</dd>
+						<dt><var>$is_hidden</var></dt>
+						<dd>Признак видимости, 1 - ролик скрыт</dd>
+						<dt><var>$category_id</var></dt>
+						<dd>ID категории</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="patchVideo" id="_patchVideo">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_patchVideo">#</a>
+			<code>patchVideo( <span>string <var>$id</var></span>, <span>string|null <var>$title</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$description</var> = <span class="php-keyword1">null</span></span>, <span>integer|null <var>$is_hidden</var> = <span class="php-keyword1">null</span></span>, <span>integer|null <var>$category_id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Обновление только указанных полей в информации о ролике</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Обновление только указанных полей в информации о ролике</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ролика</dd>
+						<dt><var>$title</var></dt>
+						<dd>Название</dd>
+						<dt><var>$description</var></dt>
+						<dd>Описание</dd>
+						<dt><var>$is_hidden</var></dt>
+						<dd>Признак видимости, 1 - ролик скрыт</dd>
+						<dt><var>$category_id</var></dt>
+						<dd>ID категории</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="addThumb" id="_addThumb">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_addThumb">#</a>
+			<code>addThumb( <span>string <var>$id</var></span>, <span>string <var>$filename</var></span> )</code>
+
+			<div class="description short">
+				<p>Загрузка превью к ролику</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Загрузка превью к ролику</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ролика</dd>
+						<dt><var>$filename</var></dt>
+						<dd>Путь к файлу превью</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="publication" id="_publication">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_publication">#</a>
+			<code>publication( <span>string <var>$id</var></span>, <span>string <var>$date</var></span> )</code>
+
+			<div class="description short">
+				<p>Отложенная публикация ролика</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Отложенная публикация ролика</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ролика</dd>
+						<dt><var>$date</var></dt>
+						<dd>Дата в формате 'YYYY-MM-DD H:i:s', например: '2015-01-16 20:36:31'</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getPlayOptions" id="_getPlayOptions">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getPlayOptions">#</a>
+			<code>getPlayOptions( <span>string <var>$id</var></span>, <span>integer|null <var>$quality</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$userAgent</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$userIP</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$referer</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Получение информации для проигрывания видео</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Получение информации для проигрывания видео</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd>ID ролика</dd>
+						<dt><var>$quality</var></dt>
+						<dd>количество выдаваемых качеств</dd>
+						<dt><var>$userAgent</var></dt>
+						<dd></dd>
+						<dt><var>$userIP</var></dt>
+						<dd>IP от имени которого выполнялся запрос</dd>
+						<dt><var>$referer</var></dt>
+						<dd>Referer от имени которого выполнялся запрос</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		</table>
+
+		<h3>Methods inherited from <a href="class-Rutube.Entity.html#methods">Rutube\Entity</a></h3>
+		<p class="elementList">
+			<code><a href="class-Rutube.Entity.html#___construct">__construct()</a></code>, 
+			<code><a href="class-Rutube.Entity.html#_getTransport">getTransport()</a></code>, 
+			<code><a href="class-Rutube.Entity.html#_setTransport">setTransport()</a></code>
+		</p>
+
+
+		<h3>Magic methods summary</h3>
+
+
+
+
+
+
+
+
+		<h2>Properties summary</h2>
+
+		<h3>Properties inherited from <a href="class-Rutube.Entity.html#properties">Rutube\Entity</a></h3>
+		<p class="elementList">
+			<code><a href="class-Rutube.Entity.html#$transport"><var>$transport</var></a></code>
+		</p>
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		PHP client for Rutube API API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
